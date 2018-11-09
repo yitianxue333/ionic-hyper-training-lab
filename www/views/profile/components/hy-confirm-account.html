@@ -1,0 +1,59 @@
+<div class="confirm-account">
+  <form name="confirmAccountForm" novalidate="" class="grey-back">
+    <div class="row">
+      <div class="col">
+        <div class="heading">
+          CONFIRM ACCOUNT
+          <div class="text text-left help-text">To confirm your identity you must sign in with a valid method for your account. If you use a user name and password for accessing your account you may enter that in the form below for confirmation. If you signed up with Facebook or attached a Facebook account after signing up, you may use the Facebook login button below.</div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="form-input" ng-class="{'has-error': confirmAccountForm.username.$invalid && (confirmAccountForm.$submitted || !confirmAccountForm.username.$pristine)}">
+          <label class="input-label" ng-class="{ 'error-label' : confirmAccountForm.username.$invalid && (confirmAccountForm.$submitted || !confirmAccountForm.username.$pristine) }">USERNAME*</label>
+          <input type="text" name="username" placeholder="Username" ng-model="identity.username" required>
+      </div>
+      <span ng-show="(!confirmAccountForm.username.$pristine || confirmAccountForm.$submitted) && confirmAccountForm.username.$error.required"
+      class="error-message" class="error-message">Please enter a valid  username</span>
+    </div>
+    <div class="form-group">
+      <div class="form-input"  ng-class="{'has-error': confirmAccountForm.password.$invalid && (confirmAccountForm.$submitted || !confirmAccountForm.password.$pristine)}">
+          <label class="input-label" ng-class="{ 'error-label' : confirmAccountForm.username.$invalid && (confirmAccountForm.$submitted || !confirmAccountForm.username.$pristine) }">PASSWORD*</label>
+          <input type="password" name="password" placeholder="Password" ng-model="identity.password" required>
+      </div>
+        <span ng-show="(!confirmAccountForm.password.$pristine || confirmAccountForm.$submitted) && confirmAccountForm.password.$error.required"
+        class="error-message" class="error-message">Please enter a valid  password</span>
+    </div>
+    <div class="row padding-h-5 margin-t--5" ng-show="(errorMessage.length > 0)">
+      <div class="col alert alert-error">
+        {{errorMessage}} !
+      </div>
+    </div>
+    <div class="row no-padding no-margin-top">
+      <div class="col"  ng-class="{'button-error' : (submitButtonMode() == 'FIX') }">
+        <button class="button button-block large-button-font button-black" ng-disabled="(submitButtonMode() == 'DISABLED' || submitButtonMode() == 'FIX')" type="submit" ng-click="confirmAcccount();">
+          {{ (submitButtonMode() == 'FIX') ? 'PLEASE FIX ERROR' : 'LOG IN'  }}
+        </button>
+      </div>
+    </div>
+    <div class="row or-text">
+      <div class="col no-padding">
+        <label>
+          <hr />
+          <span>OR</span>
+        </label>
+      </div>
+    </div>
+    <div class="row no-padding">
+      <div class="col">
+        <label>
+            <a on-tap="facebookConfirm()" href="" class="button button-block button-facebook large-button-font"><i class="icon icon-facebook pull-left"></i><span>LOG IN WITH FACEBOOK</span></a>
+        </label>
+      </div>
+    </div>
+    <div class="row padding-h-5 fb-error margin-t--5" ng-show="(fbErrorMessage.length > 0)">
+      <div class="col alert alert-error">
+        {{fbErrorMessage}} !
+      </div>
+    </div>
+</div>

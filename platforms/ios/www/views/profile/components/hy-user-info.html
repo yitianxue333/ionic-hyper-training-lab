@@ -1,0 +1,162 @@
+<form name="personalInfoForm" ng-submit="save()" novalidate="" class="grey-back" >
+  <div class="row form-input-top" data-ng-if="showCongratulations === 'true'">
+    <div class="col col-top message-info">
+      <div>
+        <h3>CONGRATULATIONS</h3>
+        <div class="description">
+          You just activated your Hyper Training Lab account. Now you just need to finish filling in your profile details below.  
+          You will need to complete your profile details in order to be displayed on the Leaderboards.
+        </div>
+      </div>
+      <a class="text-right skip" ng-click="clearHistory()"><span>SKIP THIS</span> <i class="si si-close"></i></a>
+    </div>
+  </div>
+  <div class="row form-input-top" data-ng-if="showCongratulations === 'incomplete'">
+    <div class="col col-top message-info">
+      <div>
+        <h3>FINISH YOUR PROFILE</h3>
+        <div class="description">
+          Hey, we noticed that you haven't finished filling out your profile. 
+          You need to complete your profile details in order to be displayed on the leaderboards. 
+          Why not take a moment and do that now?
+        </div>
+      </div>
+      <a class="text-right skip" ng-click="clearHistory()"><span>SKIP THIS</span> <i class="si si-close"></i></a>
+    </div>
+  </div>
+  <div class="row form-input-top" ng-if="showMessage">
+    <div class="col col-top message-info">
+      <div>
+        <div class="description">
+          It looks like you need to finish filling in your profile details below. You need to complete your profile details in order to be displayed on the leaderboards.
+        </div>
+      </div>
+      <a class="text-right skip" ng-click="hideMessage()"><span>SKIP THIS</span> <i class="si si-close"></i></a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="heading">PERSONAL INFORMATION</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="form-input" ng-class="{ 'has-error' : personalInfoForm.nickName.$invalid && (personalInfoForm.$submitted || !personalInfoForm.nickName.$pristine) }">
+        <label class="input-label" ng-class="{ 'error-label' : personalInfoForm.nickName.$invalid && (personalInfoForm.$submitted || !personalInfoForm.nickName.$pristine) }">DISPLAY NAME*</label>
+        <input type="text" name="nickName" placeholder="Enter a display name" ng-model="personalInfo.nickName" ng-minlength="5" required />
+    </div>
+    <span ng-show="(!personalInfoForm.nickName.$pristine || personalInfoForm.$submitted) && personalInfoForm.nickName.$error.required" class="error-message">Please type a valid Display Name</span>
+    <span ng-show="(!personalInfoForm.nickName.$pristine || personalInfoForm.$submitted) && personalInfoForm.nickName.$error.minlength" class="error-message">Display name is too short</span>
+  </div>
+  <div class="form-group">
+    <div class="form-input" ng-class="{ 'has-error' : personalInfoForm.firstName.$invalid && (personalInfoForm.$submitted || !personalInfoForm.firstName.$pristine) }">
+        <label class="input-label" ng-class="{ 'error-label' : personalInfoForm.firstName.$invalid && (personalInfoForm.$submitted || !personalInfoForm.firstName.$pristine) }">FIRST NAME*</label>
+        <input type="text" name="firstName" placeholder="Enter your first name" ng-model="personalInfo.firstName" required />
+    </div>
+    <span ng-show="(!personalInfoForm.firstName.$pristine || personalInfoForm.$submitted) && personalInfoForm.firstName.$error.required" class="error-message">Please type a valid first name</span>
+  </div>
+  <div class="form-group">
+    <div class="form-input"  ng-class="{ 'has-error' : personalInfoForm.lastName.$invalid && (personalInfoForm.$submitted || !personalInfoForm.lastName.$pristine) }">
+        <label class="input-label"ng-class="{ 'error-label' : personalInfoForm.lastName.$invalid && (personalInfoForm.$submitted || !personalInfoForm.lastName.$pristine) }">LAST NAME*</label>
+        <input type="text" name="lastName" placeholder="Enter your last name" ng-model="personalInfo.lastName" required/>
+    </div>
+    <span ng-show="(!personalInfoForm.lastName.$pristine || personalInfoForm.$submitted) && personalInfoForm.lastName.$error.required" class="error-message">Please type a valid valid last name</span>
+  </div>
+  <div class="form-group">
+    <div class="form-input">
+      <label class="input-label">GENDER</label>
+      <label class="auto-list">
+          <input type="text" name="gender" placeholder="Select your gender" ng-model="personalInfo.gender" hy-profile-auto-list label="Gender" selected-item="personalInfo.gender"  option-list="genderList" id-field="value" text-field="label">
+      </label>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="form-input" ng-class="{ 'has-error' : personalInfoForm.birthYear.$invalid && (personalInfoForm.$submitted || !personalInfoForm.birthYear.$pristine) }">
+      <label class="input-label">BIRTH YEAR</label>
+      <label class="auto-list">
+          <input type="text" name="birthYear" placeholder="Select your birth year" ng-model="personalInfo.birthYear" hy-profile-auto-list label="Birth Year" selected-item="personalInfo.birthYear"  option-list="birthYears" id-field="value" text-field="label">
+      </label>
+      <span ng-show="(!personalInfoForm.birthYear.$pristine || personalInfoForm.$submitted) && personalInfoForm.birthYear.$error.required" class="error-message">Please select a valid birth year</span>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="form-input" ng-class="{ 'has-error' : personalInfoForm.city.$invalid && (personalInfoForm.$submitted || !personalInfoForm.city.$pristine) }">
+        <label class="input-label">CITY</label>
+        <input type="text" name="city" placeholder="Enter the city where you live" ng-model="personalInfo.city">
+    </div>
+    <span ng-show="(!personalInfoForm.city.$pristine || personalInfoForm.$submitted) && personalInfoForm.city.$error.required" class="error-message">Please select a valid city</span>
+  </div>
+  <div class="form-group">
+    <div class="form-input" ng-class="{ 'has-error' : personalInfoForm.state.$invalid && (personalInfoForm.$submitted || !personalInfoForm.state.$pristine) }">
+        <label class="input-label">STATE / PROVINCE</label>
+        <input type="text" name="state" placeholder="Enter your state or province" ng-model="personalInfo.stateProvince">
+    </div>
+    <span ng-show="(!personalInfoForm.state.$pristine || personalInfoForm.$submitted) && personalInfoForm.state.$error.required" class="error-message">Please enter a valid state / province</span>
+  </div>
+  <div class="form-group">
+    <div class="form-input" ng-class="{ 'has-error' : personalInfoForm.country.$invalid && (personalInfoForm.$submitted || !personalInfoForm.country.$pristine) }">
+      <label class="input-label">COUNTRY</label>
+      <label class="auto-list">
+        <input type="text" name="country" placeholder="Select the country where you live" ng-model="personalInfo.country.label" hy-profile-auto-list label="Country" selected-item="personalInfo.country"  option-list="countries" id-field="value" text-field="label" >
+      </label>
+      <span ng-show="(!personalInfoForm.country.$pristine || personalInfoForm.$submitted) && personalInfoForm.country.$error.required" class="error-message">Please select a valid country</span>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="form-input" ng-class="{ 'has-error' : personalInfoForm.timeZone.$invalid && (personalInfoForm.$submitted || !personalInfoForm.timeZone.$pristine) }">
+      <label class="input-label" ng-class="{ 'error-label' : personalInfoForm.timeZone.$invalid && (personalInfoForm.$submitted || !personalInfoForm.timeZone.$pristine) }">TIME ZONE*</label>
+      <label class="auto-list">
+        <input type="text" name="timeZone" placeholder="Select your time zone" ng-model="personalInfo.timeZone.label" hy-profile-auto-list label="Time Zone" selected-item="personalInfo.timeZone"  option-list="accountOptions.timezones" id-field="label" text-field="label" placeholder="Select your Timezone" required>
+      </label>
+      <span ng-show="(!personalInfoForm.timeZone.$pristine || personalInfoForm.$submitted) && personalInfoForm.timeZone.$error.required" class="error-message">Please select a valid Time Zone</span>
+    </div>
+  </div>
+  <div class="row form-toggle">
+    <div class="col">
+        <ion-toggle class="news-letter" ng-model="personalInfo.newsLetter" ng-true-value="1" ng-false-value="0"></ion-toggle><span class="news-span">SUBSCRIBE TO NEWSLETTER?</span>
+    </div>
+  </div>
+  <hr class="devider"></hr>
+  <div class="row">
+    <div class="col">
+      <div class="heading">ATHLETE INFORMATION</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="form-input" ng-class="{ 'has-error' : personalInfoForm.style.$invalid && (personalInfoForm.$submitted || !personalInfoForm.style.$pristine) }">
+      <label class="input-label">MARTIAL ARTS STYLE</label>
+      <label class="auto-list">
+        <input type="text" name="style" ng-model="personalInfo.style" hy-profile-auto-list label="Select your martial arts style" selected-item="personalInfo.style"  option-list="accountOptions.style" placeholder="Select your martial arts style">
+      </label>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="form-input" ng-class="{ 'has-error' : personalInfoForm.beltColor.$invalid && (personalInfoForm.$submitted || !personalInfoForm.beltColor.$pristine) }">
+      <label class="input-label">BELT COLOR</label>
+      <label class="auto-list">
+        <input type="text" name="beltColor" ng-model="personalInfo.belt" hy-profile-auto-list label="Your Belt Color" selected-item="personalInfo.belt"  option-list="accountOptions.belt" placeholder="Select your current belt color">
+      </label>
+      <span ng-show="(!personalInfoForm.beltColor.$pristine || personalInfoForm.$submitted) && personalInfoForm.beltColor.$error.required" class="error-message">Please select a valid belt color</span>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="form-input">
+      <label class="input-label">MARTIAL ATRS SCHOOL</label>
+      <label class="auto-list">
+        <input type="text" name="school" ng-model="personalInfo.school" hy-profile-auto-list label="Martial Arts School" selected-item="personalInfo.school"  option-list="accountOptions.school" placeholder="Select your hyper martial arts school">
+      </label>
+    </div>
+  </div>
+  <div class="row" ng-show="message">
+    <div class="col alert alert-{{ message.type }}">
+      <i class="{{ message.icon }} larger"></i>  {{ message.value }}
+    </div>
+  </div>
+  <div class="row padding-h-5">
+    <div class="col no-padding" ng-class="{'button-error' : (submitButtonMode() == 'FIX') }">
+      <button class="button button-block large-button-font button-black" ng-if="!successMessage" ng-disabled="(submitButtonMode() == 'FIX')" type="submit">
+         {{ (submitButtonMode() == 'FIX') ? 'PLEASE FIX ERROR' : 'SAVE PROFILE' }}
+      </button>
+      <div class="button button-block large-button-font button-success text-uppercase no-events" ng-if="successMessage">Profile info Saved!</div>
+    </div>
+  </div>
+</form>

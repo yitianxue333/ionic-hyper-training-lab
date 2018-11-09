@@ -1,0 +1,51 @@
+<form name="authorizationForm" ng-submit="doLogin();" novalidate="">
+  <div class="form-group">
+    <div class="form-input" ng-class="{ 'has-error' : authorizationForm.username.$invalid && (authorizationForm.$submitted || !authorizationForm.username.$pristine) }">
+      <input type="text" name="username" placeholder="Username" ng-model="loginData.username" required>
+    </div>
+    <span ng-show="(!authorizationForm.username.$pristine || authorizationForm.$submitted) && authorizationForm.username.$error.required" class="error-message">Please type a valid username</span>
+  </div>
+  <div class="form-group">
+    <div class="form-input" ng-class="{ 'has-error' : authorizationForm.userPassword.$invalid && (authorizationForm.$submitted || !authorizationForm.userPassword.$pristine) }">
+        <input type="password" name="userPassword" placeholder="Password" ng-model="loginData.password" required>
+    </div>
+    <span ng-show="(!authorizationForm.userPassword.$pristine || authorizationForm.$submitted) && authorizationForm.userPassword.$error.required" class="error-message">Please type a valid password</span>    
+  </div>
+  <div class="row" ng-show="(errorMessage.length > 0)">
+    <div class="col alert alert-error">
+      {{errorMessage}} !
+    </div>
+  </div>
+  <div class="row">
+    <div class="col text-center">
+      <a class="forgot-link" ng-click="openForgotLink()">Forget Your Password?</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col text-center policy-text">
+      By logging in, you agree to hyper’s <a href="" data-ng-click="openPrivacyLink()">Privacy Policy</a> and <a href="" data-ng-click="openModal();" >Terms of Service</a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col no-padding" ng-class="{'button-error' : (submitButtonMode() == 'FIX') }">
+        <button class="button button-block large-button-font button-black" ng-disabled="(submitButtonMode() == 'DISABLED' || submitButtonMode() == 'FIX')" type="submit" >
+          {{ (submitButtonMode() == 'FIX') ? 'PLEASE FIX ERROR' : 'LOG IN' }}
+        </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col no-padding">
+        <hy-facebook-login text="LOG IN WITH FACEBOOK" cancel-path="login" modal="loginModal" error-message="errorMessage" ></hy-facebook-login>
+        <a href="" style="display:none"><strong>Did you forget your password?</strong></a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col no-padding">
+      <label>
+        <button class="button button-block large-button-font button-blank" type="button" data-ng-click="openSignUp('slide-in-right')">JOIN NOW</button>
+      </label>
+    </div>
+  </div>
+
+</form>

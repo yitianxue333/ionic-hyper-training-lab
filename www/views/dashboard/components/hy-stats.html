@@ -1,0 +1,60 @@
+<div class="dashboard-stats">
+  <div class="row" ui-sref="app.leaderboard">
+      <div class="dash-col icon-col">
+        <div class="image-wrapper">
+          <img class="world" src="img/dash-hyper.svg" />
+        </div>
+      </div>
+      <div class="dash-col stat-col">
+        <div>WORLDWIDE LEADERBOARD</div>
+        <div class="sub-detail" ng-show="stats.world_rank">RANK <span class="hash">#</span>{{stats.world_rank}}</div>
+        <div class="sub-detail"  ng-hide="stats.world_rank">CURRENTLY UNRANKED</div>
+      </div>
+      <div class="dash-col arrow-col">
+        <i class="atl-chevron-thin-right pull-right"></i>
+      </div>
+  </div>
+  <div class="row"  ui-sref="app.badges">
+      <div class="dash-col icon-col">
+        <div class="image-wrapper">
+          <img ng-hide="stats.athlete_badge.urls.png" class="flag" src="img/dash-flag.svg" />
+          <img ng-show="stats.athlete_badge.urls.png" class="flag" ng-src="{{stats.athlete_badge.urls.png}}" />
+        </div>
+      </div>
+      <div class="dash-col stat-col flagged">
+        <div>{{stats.athlete_badge.badge_label}}</div>
+        <div class="sub-detail">{{stats.athlete_badge.label ? stats.athlete_badge.label : "EARN YOUR FIRST BADGE"}}</div>
+      </div>
+      <div class="dash-col arrow-col">
+        <i class="atl-chevron-thin-right pull-right"></i>
+      </div>
+  </div>
+  <div class="row"  ui-sref="app.recordPoints">
+      <div class="dash-col icon-col points-icon">
+        <div class="image-wrapper">
+          <img class="world" src="img/dash-tick.png" />
+        </div>
+      </div>
+      <div class="dash-col stat-col">
+        <div>RECORD YOUR POINTS</div>
+        <div class="sub-detail">{{ stats.week_total ? stats.week_total : 0  }} PTS THIS WEEK</div>
+      </div>
+      <div class="dash-col arrow-col">
+        <i class="atl-chevron-thin-right pull-right"></i>
+      </div>
+  </div>
+  <div class="row"  ui-sref="app.training">
+      <div class="dash-col icon-col points-icon">
+        <div class="image-wrapper">
+          <img class="world" src="img/training.png" />
+        </div>
+      </div>
+      <div class="dash-col stat-col">
+        <div>TRAINING VIDEOS</div>
+        <div class="sub-detail">MARTIAL ARTS TUTORIALS</div>
+      </div>
+      <div class="dash-col arrow-col">
+        <i class="atl-chevron-thin-right pull-right"></i>
+      </div>
+  </div>
+</div>

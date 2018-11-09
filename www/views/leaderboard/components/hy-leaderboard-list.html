@@ -1,0 +1,31 @@
+<div class="leaderboard-body">
+  <div class="row message-info" ng-if="hasRequiredInfo() == false" ui-sref="app.profile">
+    <div class="col">
+      <div class="text-justify">
+        It looks like you need to finish filling in your profile details below.
+        <strong>Tap here to complete your profile details in order to be displayed on the Hyper + Leaderboards.</strong>
+      </div>
+    </div>
+  </div>
+  <ion-list>
+    <ion-item ng-repeat="item in data.leaders" class="row lb-list-item" ng-class="{ me : item.me }">
+      <div class="lb-list-item-content">
+        <div class="item-icon">
+          <img ng-if="item.avatar" ng-src="{{item.avatar}}"/>
+          <img ng-if="!item.avatar" ng-src="img/hyper-lb-school.png" />
+        </div>
+        <div class="item-title">
+          <span class="lb-item-name hy-font-family text-uppercase">{{item.name}}</span>
+          <span class="lb-item-details text-uppercase">POINTS: {{item.points}}</span>
+        </div>
+        <div class="item-points">
+          <span class="item-pts">{{item.rank}}</span>
+          <div class="item-points-devider"></div>
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>
+  <ion-infinite-scroll  ng-if="hasRemaining()"
+    icon="ion-loading-c" on-infinite="loadMore()" distance="5%">
+  </ion-infinite-scroll>
+</div>

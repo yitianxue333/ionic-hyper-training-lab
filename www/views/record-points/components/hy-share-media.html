@@ -1,0 +1,16 @@
+<div class="row load">
+  <div class="col col-center load-border-right"
+       on-tap="activity.name === 'image' ?
+        (activity.selected) ? cancelSharing('image') : openPhotoLibrary(activity) :
+        (activity.selected) ? cancelSharing('video') : openVideoLibrary(activity)"
+       data-ng-repeat="activity in data.activities|filter:isMedia">
+    <div class="media-button">
+      <div class="close-media" data-ng-show="activity.selected">
+       <i class="fa fa-times-circle fa-2x"></i>
+     </div>
+      <i class="fa {{ activity.name === 'image' ? 'fa-picture-o' : 'fa-film' }} fa-3x"  ng-class="{'padding-top-10': (summary.media == 0) }"></i>
+      <span class="load-title" data-ng-hide="activity.selected">LOAD {{ activity.name === 'image' ? 'IMAGE' : 'VIDEO' }}</span>
+      <p class="load-sub-title">{{ activity.points }} POINTS</p>
+    </div>
+  </div>
+</div>

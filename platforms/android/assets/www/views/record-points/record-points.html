@@ -1,0 +1,17 @@
+<ion-view class="record-points-view" data-ng-controller="PointsController" hide-back-button="true">
+  <ion-nav-title>
+    <span>RECORD POINTS</span>
+  </ion-nav-title>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+    </button>
+  </ion-nav-buttons>
+  <ion-content padding="true" scroll="false"  ng-class="{'has-media': (summary.media == 0) }" >
+    <hy-record-points></hy-record-points>
+  </ion-content>
+  <ion-footer-bar  ng-class="{'has-media': (summary.media == 0) }">
+    <div class="record-points-bottom">
+      <hy-record-points-summary summary="summary" on-records-save="onRecordsSave()"></hy-record-points-summary>
+    </div>
+  </ion-footer-bar>
+</ion-view>

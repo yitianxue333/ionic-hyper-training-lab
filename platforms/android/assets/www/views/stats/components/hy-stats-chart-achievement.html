@@ -1,0 +1,24 @@
+<div>
+  <div class="chart-container chart-size">
+    <div class="row chart-header">
+      <div class="col col-70 text-center text-left">ACHIEVEMENT POINTS</div>
+       <div class="col points-chart-title pull-right text-right text-uppercase">{{externalAchieveTitle}}</div>
+    </div>
+    <div class="row">
+      <div id="chartAchievementPoints" class="col" style="padding:0;width:98%;height:50vw"></div>
+    </div>
+    <div class="row chart-stats">
+      <div class="col text-center">
+        <p class="item-sub-detail">{{ weeklyStats.achieve.total  }}</p>
+        <p class="item-week-stat">PTS THIS WEEK</p>
+        <span class="devider"></span>
+      </div>
+      <div class="col text-center">
+        <img src="img/points-increse.svg" class="point-increse" ng-show="weeklyStats.achieve.difference > 0" />
+        <img src="img/points-increse.svg" class="point-decrease" ng-show="weeklyStats.achieve.difference < 0" />
+        <i class="icon icon-recordpoints point-equle" ng-show="weeklyStats.achieve.difference == 0" ></i>
+        <p class="item-week-stat"> {{weeklyStats.achieve.difference > 0 ? "UP": "" }} {{weeklyStats.achieve.difference < 0 ? "DOWN": "" }}  {{weeklyStats.achieve.difference}} PTS THIS WEEK</p>
+      </div>
+    </div>
+  </div>
+</div>

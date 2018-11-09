@@ -1,0 +1,78 @@
+<ion-modal-view class="record-points-summary-view">
+  <ion-content class="modal-content">
+    <div class="row check-in-summary">
+      <div class="col">
+        <h3>CHECK-IN SUMMARY</h3>
+        <p class="header-sub-title">{{ date | date: 'MMMM d @ ha' }}</p>
+      </div>
+    </div>
+    <div class="summary">
+      <div class="row">
+        <div class="col col-center summary-item margin-right">
+          <div class="summary-title"><span>TRAIN</span></div>
+          <div class="summary-detail">
+            <div>{{ summary.train }} PTS</div>
+          </div>
+        </div>
+        <div class="col col-center summary-item margin-left">
+          <div class="summary-title"><span>ACHIEVE</span></div>
+          <div class="summary-detail">
+            <div>{{ summary.achieve }} PTS </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-center summary-item margin-right">
+          <div class="summary-title"><span>INSPIRE</span></div>
+          <div class="summary-detail">
+            <div>{{ summary.inspire }} PTS </div>
+          </div>
+        </div>
+        <div class="col col-center summary-item margin-left summary-total">
+          <div class="summary-title"><span>TOTAL</span></div>
+          <div class="summary-detail">
+            <div>{{ summary.train + summary.achieve + summary.inspire + summary.media }} PTS</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row new-achievements" data-ng-if="achievements.length > 0">
+      <div class="col">
+        <h3>YOU JUST RANKED UP!</h3>
+      </div>
+    </div>
+    <div class="row achievements" ng-repeat="achievement in achievements">
+      <div class="col col-center achievement-image achievements-border-right">
+        <img ng-src="{{achievement.urls.png}}" >
+      </div>
+      <div class="col col-center achievement-detail">
+        <div class="border-bottom points-ico"><img src="img/points-increse.svg" class="point-increse" /></div>
+        <div class="border-bottom" ng-show="achievement.badge_label">{{achievement.badge_label}}</div>
+        <div class="border-bottom" ng-show="achievement.rank_label">{{achievement.rank_label}}</div>
+        <div><strong>Now Level {{achievement.level}}</strong></div>
+      </div>
+    </div>
+<!--    <div class="share">-->
+<!--      <div class="row" ng-show="facebookInfo.accessToken">-->
+<!--        <div class="col no-padding">-->
+<!--          <label>-->
+<!--              <a  on-tap="showPreview()" href="" class="button button-block button-facebook large-button-font no-margin"><i class="icon icon-facebook pull-left"></i><span>SHARE YOUR SUCCESS</span></a>-->
+<!--          </label>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="row" ng-show="!facebookInfo.accessToken">-->
+<!--        <div class="col no-padding">-->
+<!--          <label>-->
+<!--              <a  on-tap="connectFacebook()" href="" class="button button-block button-facebook large-button-font no-margin"><i class="icon icon-facebook pull-left"></i><span>CONNECT FACEBOOK</span></a>-->
+<!--          </label>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <hr class="devider-bottom" />-->
+<!--      <p class="footer-sub-title">No Thanks, show me...</p>-->
+<!--      <div class="footer-menu"><a ng-click="skipShare('app.dashboard')" href="">DASHBOARD</a> | <a ng-click="skipShare('app.stats')" href="" >STATS</a> | <a ng-click="skipShare('app.leaderboard')" href="">LEADERBOARDS</a></div>-->
+<!--    </div>-->
+     <hr class="devider-bottom" />
+     <p class="footer-sub-title">No Thanks, show me...</p>
+     <div class="footer-menu"><a ng-click="skipShare('app.dashboard')" href="">DASHBOARD</a> | <a ng-click="skipShare('app.stats')" href="" >STATS</a> | <a ng-click="skipShare('app.leaderboard')" href="">LEADERBOARDS</a></div>
+  </ion-content>
+</ion-modal-view>

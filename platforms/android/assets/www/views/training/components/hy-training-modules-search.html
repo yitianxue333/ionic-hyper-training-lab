@@ -1,0 +1,21 @@
+<div>
+    <ion-header-bar class="bar-subheader filter-subheader">
+            <div class="row filters-header filter-header-module">
+                <a ng-click="showFilters()" ng-if="filterCount==0">
+                    FILTERS
+                </a>
+                <a ng-click="showFilters()" ng-if="filterCount==1" class="filter-header-module-search">
+                    FILTER <span class="filter-count">({{filterCount}})</span>
+                </a>
+                <a ng-click="showFilters()" ng-if="filterCount>1" class="filter-header-module-search">
+                    FILTERS <span class="filter-count">({{filterCount}})</span>
+                </a>
+            </div>
+    </ion-header-bar>
+    <ion-content class="container" ng-init="init()" hy-page-swiper>
+        <div class="content-box">
+            <hy-training-module-list modules="modules"></hy-training-module-list>
+            <div class="padding-list"></div>
+        </div>
+    </ion-content>
+</div>

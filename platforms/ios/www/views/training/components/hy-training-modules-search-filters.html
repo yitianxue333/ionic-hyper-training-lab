@@ -1,0 +1,39 @@
+<div class="modal">
+    <div class="module-filters">
+        <ion-header-bar style="height: 84px;" class="common-popup-header">
+            <div class="buttons reset-button">
+                <button class="button button-clear" ng-click="resetFilters()">RESET</button>
+            </div>
+            <div class="title">
+                <h1>FILTERS </h1>
+                <h2>{{paging.total}} modules</h2>
+            </div>
+            <div class="buttons clear-button">
+                <button class="button button-clear" ng-click="closeFilters()">DONE</button>
+            </div>
+        </ion-header-bar>
+        <ion-content  class="filter-content" style="top:84px">
+            <ion-list>
+                <div ng-repeat="filter in filters">
+                    <ion-item class="item-main"
+                            ng-click="toggleGroup(filter)"
+                            ng-class="{active: isGroupShown(filter)}">
+                        <div class="group-name pull-left">
+                            <span class="head text-uppercase">
+                                {{filter.name}}
+                            </span>
+                            <span>{{filter.term ? filter.term.label : 'All'}}</span>
+                        </div>
+                    <i class="icon pull-right" ng-class="isGroupShown(filter) ? 'ion-minus' : 'ion-plus'"></i>
+                    </ion-item>
+
+                    <ion-item class="item-sub" data-ng-click="setFilter(filter.name, item._id, true)" ng-show="isStyleInDivision(filter, item._id)" class="item-accordion"
+                            ng-repeat="item in taxonomies.by_name[filter.name].terms.list">
+                        <div class="pull-left text-uppercase">{{item.label}}</div>
+                        <div class="pull-right"><ion-checkbox   ng-checked="item.selected" class="checkbox-square stable"></ion-checkbox></div>
+                    </ion-item>
+                </div>
+            </ion-list>
+        </ion-content>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="67.266px" height="78.261px" viewBox="0 0 67.266 78.261" enable-background="new 0 0 67.266 78.261" xml:space="preserve">
+<rect x="37.438" y="-846.451" fill="none" width="750" height="1334"/>
+<g>
+	<defs>
+		<rect id="SVGID_1_" x="37.438" y="-846.451" width="750" height="1334"/>
+	</defs>
+	<clipPath id="SVGID_2_">
+		<use xlink:href="#SVGID_1_"  overflow="visible"/>
+	</clipPath>
+	<path clip-path="url(#SVGID_2_)" fill="#010101" d="M774.186-77.502l-11.427-11.872c-0.429-0.433-0.429-1.131,0-1.566
+		c0.43-0.432,1.122-0.432,1.551,0l12.527,12.653c0.43,0.434,0.43,1.134,0,1.566L764.31-64.068c-0.43,0.435-1.122,0.433-1.551,0
+		c-0.429-0.43-0.429-1.131,0-1.565L774.186-77.502L774.186-77.502z"/>
+</g>
+<g>
+	<defs>
+		<rect id="SVGID_3_" x="37.438" y="-846.451" width="750" height="1334"/>
+	</defs>
+	<clipPath id="SVGID_4_">
+		<use xlink:href="#SVGID_3_"  overflow="visible"/>
+	</clipPath>
+	<rect x="37.438" y="-730.004" clip-path="url(#SVGID_4_)" fill="#F5F6F6" width="750" height="60"/>
+</g>
+<polygon fill="#B3B3B3" points="0,0 0,2.494 0,63.482 33.58,78.261 67.266,65.018 67.266,0 "/>
+<path fill="#F4F5F5" d="M55.594,21.973v-5.757H40.727v5.757h4.559v5.338h-3.213h-2.016h-0.668H27.876h-0.669h-2.016H21.98v-5.338
+	h4.553v-5.757H11.672v5.757h4.551v5.338h-3.21v5.756h3.21v2.57v1.023h-3.21v5.757h3.21v4.297h-4.551v5.755h14.861v-5.755H21.98
+	v-4.297h3.211h2.016h0.669h11.513h0.668h2.016h3.213v4.297h-4.559v5.755h14.867v-5.755h-4.56v-4.297h3.212V36.66h-3.212v-1.023
+	v-2.57h3.212v-5.756h-3.212v-5.338H55.594z M45.285,35.637v1.023h-3.213h-2.016h-0.668H27.876h-0.669h-2.016H21.98v-1.023v-2.57
+	h3.211h2.016h0.669h11.513h0.668h2.016h3.213V35.637z"/>
+<polygon fill="none" stroke="#010101" stroke-miterlimit="10" points="2,2.326 2,4.674 2,62.034 33.583,75.934 65.266,63.479 
+	65.266,2.326 "/>
+<rect x="37.438" y="-846.451" fill="none" width="750" height="1334"/>
+<rect x="37.438" y="-846.451" fill="none" width="750" height="1334"/>
+</svg>

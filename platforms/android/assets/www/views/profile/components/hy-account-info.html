@@ -1,0 +1,153 @@
+<div class="account-info" ng-init="init()">
+  <form name="emailInfoForm" novalidate="" class="grey-back">
+    <div class="row">
+      <div class="col">
+        <div class="heading">
+          EMAIL
+          <div class="text text-left help-text">Here you can update the email address associated with your account.</div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="form-input" ng-class="{ 'has-error' : emailInfoForm.email.$invalid && (emailInfoForm.$submitted || !emailInfoForm.email.$pristine) }">
+          <label class="input-label" ng-class="{ 'error-label' : emailInfoForm.email.$invalid && (emailInfoForm.$submitted || !emailInfoForm.email.$pristine) }">EMAIL*</label>
+          <input type="email" name="email" placeholder="Email address" ng-model="profile.email" required>
+      </div>
+      <span ng-show="(!emailInfoForm.email.$pristine || emailInfoForm.$submitted) && emailInfoForm.email.$error.required" class="error-message">Please type a valid Email</span>
+      <span ng-show="(!emailInfoForm.email.$pristine || emailInfoForm.$submitted) && emailInfoForm.email.$error.email" class="error-message">Not a valid email!</span>
+    </div>
+    <div class="row" ng-show="emailErrorMessage.length > 0">
+      <div class="col alert alert-error">
+         {{ emailErrorMessage }}
+      </div>
+    </div>
+    <div class="row no-padding no-margin">
+      <div class="col" ng-class="{'button-error' : !emailInfoForm.$pristine && emailInfoForm.$invalid }" >
+        <button class="button button-block large-button-font button-black no-margin" type="submit" ng-disabled="!emailInfoForm.$pristine && emailInfoForm.$invalid" ng-click="updateEmail()" ng-if="!emailUpdateSuccessMessage">
+          {{ (!emailInfoForm.$pristine && emailInfoForm.$invalid) ? 'PLEASE FIX ERROR' : 'SAVE CHANGES' }}
+        </button>
+        <div class="button button-block large-button-font button-success no-margin text-uppercase no-events" ng-if="emailUpdateSuccessMessage">Your Email Has Been Updated!</div>
+      </div>
+    </div>
+  </form>
+  <hr class="devider margin-v-20">
+  <form name="accountInfoForm" novalidate="" class="grey-back" ng-show="strategies['local'].strategy">
+    <div class="row">
+      <div class="col">
+        <div class="heading">
+            UPDATE USERNAME & PASSWORD
+            <div class="text text-left help-text">Update your username, your password, or both.</div>  
+        </div> 
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="form-input" ng-class="{ 'has-error' : accountInfoForm.userName.$invalid && (!accountInfoForm.$pristine) }">
+          <label class="input-label" ng-class="{ 'error-label' : accountInfoForm.userName.$invalid && (!accountInfoForm.$pristine) }">USERNAME*</label>
+          <input type="text" name="userName" placeholder="Username" ng-model="profile.username">    
+      </div>
+      <span ng-show="accountInfoForm.userName.$invalid && (!accountInfoForm.userName.$pristine)" class="error-message">Please type a valid username</span>
+    </div> 
+    <div class="form-group">
+      <div class="form-input"  ng-class="{ 'has-error' : accountInfoForm.newPassword.$invalid && (!accountInfoForm.$pristine) || accountInfoForm.newPassword.$minlength}">
+          <label class="input-label" ng-class="{ 'error-label' : accountInfoForm.newPassword.$invalid && (!accountInfoForm.$pristine) || accountInfoForm.newPassword.$minlength}">NEW PASSWORD*</label>
+          <input type="password" ng-minlength="6" name="newPassword" placeholder="New Password" ng-model="profile.newPassword" >
+      </div>
+      <span ng-show="(!accountInfoForm.$pristine || accountInfoForm.$submitted) && accountInfoForm.newPassword.$error.required" class="error-message">New password is required</span>
+      <span ng-show="(!accountInfoForm.$pristine || accountInfoForm.$submitted) && (accountInfoForm.newPassword.$error.minlength)" class="error-message">Password is too short</span>
+    </div>
+    <div class="form-group">
+
+      <div class="form-input"  ng-class="{ 'has-error' : $scope.accountInfoForm.confirmNewPassword.$invalid || validatePasswordConfirm() }">
+                    <label class="input-label" ng-class="{ 'error-label' : $scope.accountInfoForm.confirmNewPassword.$invalid || validatePasswordConfirm() }">CONFIRM NEW PASSWORD*</label>
+          <input class="col" type="password" name="confirmNewPassword" placeholder="Confirm New Password" ng-model="profile.confirmNewPassword" ng-required="accountInfoForm.newPassword.length > 0">
+      </div>
+      <span ng-show="(accountInfoForm.newPassword.$viewValue.length > 0) && (!accountInfoForm.confirmNewPassword.$viewValue && accountInfoForm.confirmNewPassword.$viewValue.length == 0)" class="error-message">Please confirm your password</span>
+      <span ng-show="!accountInfoForm.$pristine && (profile.newPassword != profile.confirmNewPassword) && profile.confirmNewPassword.length > 0" class="error-message">Confirm Password doesn't match!</span>
+    </div>
+    <div class="row" ng-show="credentialErrorMessage.length > 0">
+      <div class="col alert alert-error">
+         {{ credentialErrorMessage }}
+      </div>
+    </div>
+    <div class="row  no-padding no-margin">
+      <div class="col" ng-class="{'button-error' : (!accountInfoForm.$pristine && accountInfoForm.$invalid) || validatePasswordConfirm() }">
+        <button class="button button-block large-button-font button-black no-margin" 
+        ng-disabled="!accountInfoForm.$pristine && accountInfoForm.$invalid ||  validatePasswordConfirm()" type="submit" ng-if="!updateSuccessMessage && !createSuccessMessage" ng-click="createOrUpdatePassword()">
+          {{ ((!accountInfoForm.$pristine && accountInfoForm.$invalid) || validatePasswordConfirm()) ? 'PLEASE FIX ERROR' : 'SAVE CHANGES' }}
+        </button>
+        <div class="button button-block large-button-font button-success no-margin text-uppercase no-events" ng-if="updateSuccessMessage">
+          Your Password/Login was Updated!
+        </div>
+        <div class="button button-block large-button-font button-success no-margin text-uppercase no-events" ng-if="createSuccessMessage">
+          Your Password/Login was Created!
+        </div>
+      </div>
+    </div>  
+  </form>
+  <form name="accountInfoCreateForm" novalidate="" class="grey-back" ng-show="!strategies['local'].strategy">
+    <div class="row">
+      <div class="col">
+        <div class="heading">
+            CREATE USERNAME & PASSWORD
+            <div class="text text-left help-text">Add a username and password to your account.</div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="form-input" ng-class="{ 'has-error' : accountInfoCreateForm.userName.$invalid && (!accountInfoCreateForm.userName.$pristine || accountInfoCreateForm.$submitted) }">
+          <label class="input-label" ng-class="{ 'error-label' : accountInfoCreateForm.userName.$invalid && (!accountInfoCreateForm.userName.$pristine || accountInfoCreateForm.$submitted) }">USERNAME*</label>
+          <input type="text" name="userName" placeholder="Username" ng-model="profile.username" required>    
+      </div>
+      <span ng-show="accountInfoCreateForm.userName.$invalid && (!accountInfoCreateForm.userName.$pristine || accountInfoCreateForm.$submitted)" class="error-message">Please type a valid username</span>
+    </div> 
+    <div class="form-group">
+      <div class="form-input"  ng-class="{ 'has-error' :(!accountInfoCreateForm.newPassword.$pristine || accountInfoCreateForm.$submitted) && (accountInfoCreateForm.newPassword.$invalid)}">
+          <label class="input-label" ng-class="{ 'error-label' : (!accountInfoCreateForm.newPassword.$pristine || accountInfoCreateForm.$submitted) && (accountInfoCreateForm.newPassword.$invalid)}">NEW PASSWORD*</label>
+          <input type="password" ng-minlength="6" name="newPassword" placeholder="New Password*" ng-model="profile.newPassword" required>
+      </div>
+      <span ng-show="(!accountInfoCreateForm.newPassword.$pristine || accountInfoCreateForm.$submitted) && accountInfoCreateForm.newPassword.$error.required" class="error-message">New password is required</span>
+      <span ng-show="(!accountInfoCreateForm.newPassword.$pristine || accountInfoCreateForm.$submitted) && (accountInfoCreateForm.newPassword.$error.minlength)" class="error-message">Password is too short</span>
+    </div>
+    <div class="form-group">
+      <div class="form-input"  ng-class="{ 'has-error' : (!accountInfoCreateForm.confirmNewPassword.$pristine || accountInfoCreateForm.$submitted ) && (accountInfoCreateForm.confirmNewPassword.$invalid) }">
+          <label class="input-label" ng-class="{ 'error-label' : (!accountInfoCreateForm.confirmNewPassword.$pristine || accountInfoCreateForm.$submitted ) && (accountInfoCreateForm.confirmNewPassword.$invalid) }">CONFIRM PASSWORD*</label>
+          <input class="col" type="password" name="confirmNewPassword" placeholder="Confirm New Password*" ng-model="profile.confirmNewPassword" required ng-pattern="profile.newPassword">
+      </div>
+      <span ng-show="(!accountInfoCreateForm.confirmNewPassword.$pristine || accountInfoCreateForm.$submitted) && accountInfoCreateForm.confirmNewPassword.$error.required" class="error-message">Please confirm your password</span>
+      <span ng-show="(!accountInfoCreateForm.confirmNewPassword.$pristine || accountInfoCreateForm.$submitted) && accountInfoCreateForm.confirmNewPassword.$error.pattern" class="error-message">Confirm Password doesn't match!</span>
+    </div>
+    <div class="row" ng-show="credentialErrorMessage.length > 0">
+      <div class="col alert alert-error">
+         {{ credentialErrorMessage }}
+      </div>
+    </div>
+    <div class="row  no-padding no-margin">
+      <div class="col" ng-class="{'button-error' : (
+          ((!accountInfoCreateForm.userName.$pristine || accountInfoCreateForm.$submitted) && accountInfoCreateForm.userName.$invalid) || 
+          ((!accountInfoCreateForm.newPassword.$pristine || accountInfoCreateForm.$submitted) && accountInfoCreateForm.newPassword.$invalid) ||
+          ((!accountInfoCreateForm.confirmNewPassword.$pristine || accountInfoCreateForm.$submitted) && accountInfoCreateForm.confirmNewPassword.$invalid) 
+        )}">
+        <button class="button button-block large-button-font button-black no-margin" 
+        ng-disabled="(((!accountInfoCreateForm.userName.$pristine || accountInfoCreateForm.$submitted) && accountInfoCreateForm.userName.$invalid) || 
+          ((!accountInfoCreateForm.newPassword.$pristine || accountInfoCreateForm.$submitted) && accountInfoCreateForm.newPassword.$invalid) ||
+          ((!accountInfoCreateForm.confirmNewPassword.$pristine || accountInfoCreateForm.$submitted) && accountInfoCreateForm.confirmNewPassword.$invalid))" type="submit" ng-if="!updateSuccessMessage && !createSuccessMessage" ng-click="createOrUpdatePassword()">
+          
+          {{(((!accountInfoCreateForm.userName.$pristine || accountInfoCreateForm.$submitted) && accountInfoCreateForm.userName.$invalid) || 
+          ((!accountInfoCreateForm.newPassword.$pristine || accountInfoCreateForm.$submitted) && accountInfoCreateForm.newPassword.$invalid) ||
+          ((!accountInfoCreateForm.confirmNewPassword.$pristine || accountInfoCreateForm.$submitted) && accountInfoCreateForm.confirmNewPassword.$invalid) )? 'PLEASE FIX ERROR' : 'SAVE CHANGES' }}
+        </button>
+        <div class="button button-block large-button-font button-success no-margin text-uppercase no-events" ng-if="updateSuccessMessage">
+          Your Password/Login was Updated!
+        </div>
+        <div class="button button-block large-button-font button-success no-margin text-uppercase no-events" ng-if="createSuccessMessage">
+          Your Password/Login was Created!
+        </div>
+      </div>
+    </div>  
+  </form>
+
+
+  <hr class="devider margin-v-20">
+  <hy-facebook-connect></hy-facebook-connect>
+</div>
+

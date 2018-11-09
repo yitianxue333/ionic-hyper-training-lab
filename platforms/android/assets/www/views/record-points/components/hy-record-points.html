@@ -1,0 +1,17 @@
+<div class="content">
+  <div class="record-points-sub-container">
+    <form name="record_points_form" class="tab-section" novalidate ng-cloak>
+      <hy-tabs scrollable="true">
+        <hy-tab title="TRAIN" class="record-points-info">
+          <hy-record-points-items filter="train" promise="promise" activities="data.activities"></hy-record-points-items>
+        </hy-tab>
+        <hy-tab title="ACHIEVE" class="record-points-info">
+          <hy-record-points-items filter="achieve" promise="promise" activities="data.activities"></hy-record-points-items>
+        </hy-tab>
+        <hy-tab title="INSPIRE" class="record-points-info">
+          <hy-record-points-items filter="influence" promise="promise" activities="data.activities"></hy-record-points-items>
+        </hy-tab>
+      </hy-tabs>
+    </form>
+  </div>
+</div>

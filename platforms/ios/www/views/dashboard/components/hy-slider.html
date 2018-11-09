@@ -1,0 +1,12 @@
+<div class="dashboard-slider">
+    <div class="slider-header">
+      DAILY MINDSET
+    </div>
+    <div class="dash-swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" ng-repeat="slide in slides['dashboard-tiles']" ng-init="$last && initSlider()">
+                <img ng-click="link($index)" class="slide-img" ng-src="{{slide.image}}" alt="" />
+            </div>
+        </div>
+    </div>
+</div>

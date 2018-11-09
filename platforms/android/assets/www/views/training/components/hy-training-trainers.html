@@ -1,0 +1,18 @@
+<div class="hy-training-trainers" ng-init="processTrainers()">
+      <div class="swiper-container-trainers" style="width:98vw">
+        <div class="row" ng-repeat="trainerRow in trainingGrid">
+            <div class="col" ng-repeat="trainer in trainerRow"  ui-sref="app.trainer({trainerId: trainer._id})" >
+                <img class="slide-img" ng-src="{{trainer.images.portrait.url}}"/>
+                <div class="text-content" ng-init="nameParts = trainer.name.split(' ', 2)">
+                    <h2 class="text-uppercase hy-font-family top-name">{{nameParts[0]}}</h2>
+                    <h2 class="text-uppercase hy-font-family bottom-name" ng-if="nameParts[1]" >{{nameParts[1]}}</h2>
+                    <hr class="devider"/>
+                    <div class="text-uppercase byline">{{trainer.tags}}</div>
+                </div>
+            </div>
+            <div class="col" ng-if="trainerRow.length == 1" >
+                
+            </div>
+        </div>
+    </div>
+</div>

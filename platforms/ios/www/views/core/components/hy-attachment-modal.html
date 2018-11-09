@@ -1,0 +1,9 @@
+<ion-modal-view class="attachment-modal">
+ <ion-header-bar class="modal-header">
+     <a class="button button-clear" on-tap="attachmentModal.remove()"><span class="icon ion-close"></span></a>
+ </ion-header-bar>
+ <ion-content class="modal-content text-center center" scroll="false">
+      <span class="center_before"></span>
+      <img ng-src="{{attachment.path}}" class="attachment-image" on-tap="attachmentModal.remove()" />
+ </ion-content>
+</ion-modal-view>

@@ -1,0 +1,18 @@
+<div class="modal trainer-filters">
+    <div>
+        <ion-header-bar class="common-popup-header trainer-header">
+            <div class="title" style="left:0!important; right:0!important;">
+                <h1>FILTER TRAINERS</h1>
+            </div>
+            <div class="buttons">
+                <button class="button button-clear trainer-filter-button" ng-click="modalClose()">DONE</button>
+            </div>
+        </ion-header-bar>
+        <ion-content  class="filter-content trainer-header-content">
+            <ion-list>
+                <ion-radio icon="ion-record" ng-model="training.filterTrainer" value="" >ALL TRAINERS</ion-radio>                
+                <ion-radio  ng-repeat="division in training.tiles.divisions" icon="ion-record" ng-model="training.filterTrainer" value="{{division.label}}" >{{division.label}}</ion-radio>
+            </ion-list>
+        </ion-content>
+    </div>
+</div>

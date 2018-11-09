@@ -1,0 +1,19 @@
+<div class="training-modules-list">
+    <div class="list-item {{module.primaryDivision.toLowerCase()}} pull-left" ng-repeat="module in modules.list" ng-class="{ disabled : (module.status == 'disable'), licensed : (module.licensed) }">
+        <div class="disable-overlay">
+            <span class="hy-font-family">COMING SOON  </span>
+        </div>
+        <div class="module-thumb pull-left">
+            <img ng-src="{{module.images.thumb.url}}" alt="{{module.images.thumb.title}}" />
+            <div class="module-thumb-title text-uppercase">{{module.primaryDivision}}</div>
+        </div>
+        <div class="block-content module-data pull-left" ui-sref="app.module({moduleId: module._id})" >
+            <i class="atl-chevron-thin-right pull-right"></i>
+            <h2 class="module-title text-uppercase elipsis-2-lines">{{module.title}}</h2>
+            <div ng-repeat="tax in module.taxonomy" key={tax.singular} class="module-terms module-{{tax.singular.toLowerCase()}} text-uppercase text-ellipsis">
+                <strong>{{tax.singular}}:</strong> {{tax.terms.join(', ')}}
+            </div>
+        </div>
+    </div>
+    <div class="padding-list" ng-hide="(modules.list|filter:type=='workout').length >0"></div>
+</div>

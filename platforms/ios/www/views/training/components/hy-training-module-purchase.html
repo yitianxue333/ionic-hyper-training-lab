@@ -1,0 +1,61 @@
+<div class="hy-training-module-purchase" ng-init="init()">
+    <div class="mid-section">
+        <div class="purchase-overlay">
+            <div>
+                <div  class="module-title text-uppercase">
+                    <div>
+                        <span>PURCHASE MODULE</span>
+                    </div>
+                </div>
+
+                <button class="button back-button buttons button-clear button-clear header-item" ng-click="$ionicGoBack()">
+
+                    <i class="atl-chevron-thin-left"></i>
+                    <span class="back-text" style="transform: translate3d(0px, 0px, 0px);">
+                        <span class="default-title"></span>
+                        <span class="previous-title hide">undefined</span>
+                    </span>
+                </button>
+
+            </div>
+
+            <div class="purchase-overlay-content">
+
+                <div class="purchase-error" ng-if="purchaseStatus == '400'">
+                    <span class="error-title">{{purchaseErrorTitle}}</span>
+                    <p class="error unexpected-error">
+                        <span ng-if="purchaseErrorContent != ''">{{purchaseErrorContent}}</span>
+                        We encountered an unexpected error while trying to complete your request. If you need assistance, please <a class="link" ng-click="loadFeedbackForm()" >submit a report here.</a>
+                    </p>
+                </div>
+
+                <div class="purchase-error" ng-if="purchaseStatus == '500'">
+                    <span class="error-title">Error</span>
+                    <p class="error unexpected-error">
+                        We encountered an unexpected error while trying to complete your request. If you need assistance, please <a class="link" ng-click="loadFeedbackForm()">submit a report here.</a>
+                    </p>
+                </div>
+
+                <div class="title-wrapper text-center">
+                    <h2 class="title">{{module.title}}</h2>
+                </div>
+
+                <div class="price">
+                    <span>${{module.price}}</span>
+                </div>
+
+                <div class="purchase-btn-wrap">
+                    <button class="button button-block purchase-btn" id="purchase-btn" ng-click="pay()">
+                        Purchase module
+                    </button>
+                </div>
+
+                <div class="description-wrap">
+                    <p>Once you purchase the {{module.title}} training module for (${{module.price}}) you will unlock and have access to all video inside this training module!</p>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

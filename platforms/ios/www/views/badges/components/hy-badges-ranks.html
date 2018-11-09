@@ -1,0 +1,22 @@
+<div>
+  <div class="badge-rank" ng-repeat="rank in currentBadge.ranks" ng-show="currentBadge.ranked">
+    <div class="rank-title" ng-if="rank.label" ng-class="{ 'no-border': (rank.groupedLevels.length > 0) }">
+      {{rank.label}}
+    </div>
+    <div class="rank-body" ng-show="rank.groupedLevels.length > 0" ng-class="{'un-ranked':(currentBadge.ranks.length < 2)}">
+      <div class="row" ng-repeat="levelGroup in rank.groupedLevels">
+        <div class="col" ng-repeat="i in [1,2,3]">
+          <img ng-src="{{levelGroup[$index].urls.png}}" />
+        </div>
+      </div>
+      <div ng-if="rank.label && currentBadge.ranks[$index+1]" class="level-message text-center"><img class="point-decrease" src="img/points-increse.svg" /><span>Complete this level to unlock {{currentBadge.ranks[$index+1].label}} badges</span></div>
+    </div>
+  </div>
+  <div class="row unranked-message" ng-show="!currentBadge.ranked">
+    <div class="col">
+      <span>It looks like you haven't ranked in this badge yet. Why not go record some points
+      to earn your first {{currentBadge.name}} badge;</span>
+      <button class="button button-block button-dark" type="submit" ng-click="recodePoint()">RECORD POINTS</button>
+    </div>
+  </div>
+</div>

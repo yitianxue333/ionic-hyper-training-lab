@@ -1,0 +1,55 @@
+<div class="notification-menu">
+  <ion-side-menu side="right" class="main-menu" expose-aside-when="large">
+    <ion-content>
+      <ion-list>
+        <ion-item class="heading-item item item-avatar" nav-clear menu-close ui-sref="app.profile">
+          <div class="user-image-container">
+            <pre-img ratio="_1_1" helper-class="rounded-image">
+              <img class="user-image" ng-src="img/user-3.png" spinner-on-load>
+            </pre-img>
+          </div>
+          <h2 class="greeting">Notifications</h2>
+          <p class="message">Your notifications</p>
+        </ion-item>
+        <div class="item item-divider">YOUR ALERTS</div>
+        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.bookmarks">
+          <i class="icon ion-information-circled"></i>
+          <h2 class="menu-text">You Need to Record Some Points</h2>
+          <p>Records Points Now</p>
+          <p>9 hours left</p>
+        </ion-item>
+        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.feeds-categories">
+          <i class="icon ion-lightbulb"></i>
+          <h2 class="menu-text">New Training Tips Added</h2>
+          <p>Click Here to View New Tips</p>
+          <p>2 Days Ago</p>
+        </ion-item>
+        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.wordpress">
+          <i class="icon ion-ios-bolt"></i>
+          <h2 class="menu-text">New Training Modules Added</h2>
+          <p>Click here to View New Modules</p>
+          <p>4 Hours Ago</p>
+        </ion-item>
+        <div class="item item-divider">ACHIEVEMENTS</div>
+        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.layouts">
+          <i class="icon ion-information-circled"></i>
+          <h2 class="menu-text">Martial Arts Athlete Badge Rank Increase</h2>
+          <p>Increased To Rank Level 4</p>
+          <p>10 Minutes Ago</p>
+        </ion-item>
+        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.miscellaneous">
+          <i class="icon ion-lightbulb"></i>
+          <h2 class="menu-text">Leaderboard Rank Increase</h2>
+          <p>World Rank Increased to #30</p>
+          <p>2 Days Ago</p>
+        </ion-item>
+        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.settings">
+          <i class="icon ion-ios-checkmark-outline"></i>
+          <h2 class="menu-text">You Recorded These New Points</h2>
+          <p>15 Train Points</p>
+          <p>Yesterday</p>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</div>

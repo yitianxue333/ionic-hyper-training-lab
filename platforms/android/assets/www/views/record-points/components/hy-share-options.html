@@ -1,0 +1,55 @@
+<ion-modal-view class="record-points-share-options" hy-share-options>
+ <ion-header-bar class="modal-header">
+    <a class="button button-clear" on-tap="modalShareOptions.remove()"><i class="icon icon-close"></i></a>
+    <h1 class="title" style="text-align: center; right: 0;">{{ mediaType == 'video' ? "SHARE VIDEO" : "SHARE PICTURE" }}</h1>
+ </ion-header-bar>
+ <ion-content class="modal-content">
+   <div class="row">
+     <div class="col media-preview" ng-show="mediaType == 'video'">
+         <video on-tap="handleControls()" id="shareVideo" controls="controls" preload="metadata" class="video-player" width="100%" height="250px" ng-if="previewVideoUrl.length > 0" controls>
+           <source src="{{previewVideoUrl}}" type="{{previewVideoMime}}">
+         </video>
+    </div>
+     <div class="col media-preview" ng-show="mediaType == 'image'">
+       <img data-ng-src="{{getSecureResource(shareMedia)}}" width="60%">
+     </div>
+  </div>
+  <div class="row">
+   <div class="col">
+     <label class="item item-input">
+       <textarea type="text" ng-model="share.description" placeholder="Enter a custom sharing message here" rows="5"></textarea>
+     </label>
+   </div>
+  </div>
+  <div class="row share-options">
+    <div class="col no-padding" ng-show="facebookInfo.accessToken">
+      <div class="row padding-h-5"  ng-hide="(progress.message.length > 0)  || progress.complete" >
+        <div class="col no-padding">
+          <label>
+              TEST
+              <button on-tap="shareFBMedia()" href="" class="button button-block button-facebook large-button-font no-margin"><i class="icon icon-facebook pull-left"></i><span>SHARE ON FACEBOOK</span></button>
+          </label>
+        </div>
+      </div>
+      <div class="row padding-h-5"  ng-show="(progress.message.length > 0) && !progress.complete">
+        <div class="col no-padding">
+          <label>
+              <a on-tap="shareFBMedia()" href="" class="button button-block button-facebook large-button-font no-margin">
+                <i class="icon icon-facebook pull-left"></i><span class="text-uppercase">{{progress.message}}  {{progress.percentage}}</span>
+              </a>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="col no-padding" ng-hide="facebookInfo.accessToken">
+      <div class="row padding-h-5" >
+        <div class="col no-padding">
+          <label>
+              <a on-tap="connectFacebook();" href="" class="button button-block button-facebook large-button-font no-margin"><i class="icon icon-facebook pull-left"></i><span>CONNECT FACEBOOK</span></a>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+ </ion-content>
+</ion-modal-view>

@@ -1,0 +1,46 @@
+<ion-modal-view class="share-preview" >
+  <ion-content class="modal-content" scroll="false">
+    <div class="share-preview-header">
+      <a class="button button-clear" on-tap="closePreview()"><i class="icon icon-close"></i></a>
+      <div class="row share-preview-header-title">
+        <div class="col">
+          <h3>SHARE YOUR SUCCESS</h3>
+          <p class="header-sub-title">{{ date | date: 'MMMM d @ ha' }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="row share">
+        <div class="col">
+          <label class="item item-input">
+            <textarea type="text" class="share-message" ng-model="share.userMessage" placeholder="Enter a custom sharing message here" rows="3"></textarea>
+          </label>
+        </div>
+      </div>
+      <div class="row share">
+        <div class="share-logo">
+          <img ng-src="{{share.imageUrl}}" width="100%">
+        </div>
+        <div class="share-text">
+            <div class="title"><strong>{{share.title}}</strong></div>
+            <div class="description">{{share.description}}</div>
+            <div class="appname"><small>{{facebookAppName}}</small></div>
+        </div>
+      </div>
+      <div class="row" ng-if="!successMessage">
+        <div class="col">
+          <label>
+              <a on-tap="shareSuccess()" href="" class="button button-block button-facebook large-button-font no-margin"><i class="icon icon-facebook pull-left"></i><span>SHARE ON FACEBOOK</span></a>
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col" ng-if="successMessage">
+          <label>
+              <a href="" class="button button-block button-facebook large-button-font no-margin"><i class="icon icon-facebook pull-left"></i><span>SUCCESSFULLY SHARED</span></a>
+          </label>
+        </div>
+      </div>
+  </div>
+  </ion-content>
+</ion-modal-view>

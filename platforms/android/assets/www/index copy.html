@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src gap://ready file://* *; script-src &apos;self&apos; &apos;unsafe-inline&apos; &apos;unsafe-eval&apos; *; style-src  &apos;self&apos; &apos;unsafe-inline&apos; *">
+    <title></title>
+
+    <link href="css/ionic.app.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <link href="lib/fontawesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="lib/swiper/dist/css/swiper.min.css" rel="stylesheet">
+
+    <!-- Stripe checkout -->
+    <script src="https://checkout.stripe.com/checkout.js"></script>
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+
+    <!-- ionic/angularjs js -->
+
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/ionic-platform-web-client/dist/ionic.io.bundle.min.js"></script>
+    <script src="lib/ngCordova/dist/ng-cordova.min.js"></script>
+    <script src="lib/angular-resource/angular-resource.min.js"></script>
+    <script src="lib/angular-cookies/angular-cookies.min.js"></script>
+    <script src="lib/lodash/lodash.min.js"></script>
+    <script src="lib/angular-jwt/dist/angular-jwt.min.js"></script>
+    <script src="lib/ng-cordova-oauth/dist/ng-cordova-oauth.min.js"></script>
+    <script src="lib/moment/min/moment.min.js"></script>
+    <script src="lib/angular-moment/angular-moment.min.js"></script>
+    <script src="lib/moment-timezone/builds/moment-timezone-with-data.js"></script>
+    <script src="lib/js-md5/build/md5.min.js"></script>
+    <script src="lib/swiper/dist/js/swiper.js"></script>  
+    <script src="extra/dataset/countries.js"></script>  
+    <script src="extra/amcharts/amcharts.js"></script>
+    <script src="extra/amcharts/serial.js"></script>
+    <script src="extra/jwplayer/jwplayer.js"></script> 
+    <script>jwplayer.key="tx9vxzLBKhRMyjiyNhMjgub3eOBFVbVbJlsbeQ==";</script>
+  
+    <!-- cordova script (this will be a 404 during development) -->
+    <!-- Cordova is bootstrapped by ionic-platform-web-client, uncomment this if you remove ionic-platform-web-client... -->
+    <!-- <script src="cordova.js"></script> -->
+
+    <!-- hyper app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/app.global.config.js"></script>
+    <script src="js/app.routes.config.js"></script>
+    <script src="js/app.interceptors.config.js"></script>
+    <script src="js/app.token.config.js"></script>
+    <script src="js/core/core.js"></script>
+    <script src="js/core/controllers/CoreController.js"></script>
+    <script src="js/core/services/LocalStorage.js"></script>
+    <script src="js/core/services/Alert.js"></script>
+    <script src="js/core/services/Deploy.js"></script>
+    <script src="js/core/services/FCMBase.js"></script>
+    <script src="js/core/services/lodash.js"></script>
+    <script src="js/core/services/Notification.js"></script>
+    <script src="js/core/services/Attachment.js"></script>
+    <script src="js/core/services/Connectivity.js"></script>
+    <script src="js/core/components/hy-application-menu.js"></script>
+    <script src="js/core/components/hy-notification-menu.js"></script>
+    <script src="js/core/components/hy-auto-list.js"></script>
+    <script src="js/core/components/hy-profile-auto-list.js"></script>
+    <script src="js/core/components/custom-directives.js"></script>
+    <script src="js/core/components/hy-tabs.js"></script>
+    <script src="js/core/components/hy-tab.js"></script>
+    <script src="js/core/components/hy-page-swiper.js"></script>
+    <script src="js/dashboard/dashboard.js"></script>
+    <script src="js/dashboard/components/hy-slider.js"></script>
+    <script src="js/dashboard/components/hy-stats.js"></script>
+    <script src="js/dashboard/services/Media.js"></script>
+    <script src="js/account/account.js"></script>
+    <script src="js/account/services/Account.js"></script>
+    <script src="js/account/services/User.js"></script>
+    <script src="js/account/services/UserDevice.js"></script>
+    <script src="js/account/services/Profile.js"></script>
+    <script src="js/account/services/Identity.js"></script>    
+    <script src="js/account/components/hy-signup.js"></script>
+    <script src="js/account/components/hy-login.js"></script>
+    <script src="js/account/components/hy-facebook-login.js"></script>
+    <script src="js/account/components/hy-facebook-connect.js"></script>
+    <script src="js/account/components/hy-home.js"></script>
+    
+    <script src="js/authentication/authentication.js"></script>
+    <script src="js/authentication/services/Authentication.js"></script>
+    <script src="js/account/services/Facebook.js"></script>
+    <script src="js/profile/profile.js"></script>
+    <script src="js/profile/services/MyLibrary.js"></script>
+    <script src="js/profile/components/hy-profile-user.js"></script>
+    <script src="js/profile/components/hy-profile-account.js"></script>
+    <script src="js/profile/components/hy-user-info.js"></script>
+    <script src="js/profile/components/hy-account-info.js"></script>
+    <script src="js/profile/components/hy-confirm-account.js"></script>
+    <script src="js/profile/components/hy-training-modules-library.js"></script>
+    <script src="js/profile/components/hy-training-module-list-library.js"></script>
+    <script src="js/profile/components/hy-profile-module-settings.js"></script>
+
+    <script src="js/record-points/record-points.js"></script>
+    <script src="js/record-points/components/hy-record-points.js"></script>
+    <script src="js/record-points/components/hy-record-points-items.js"></script>
+    <script src="js/record-points/components/hy-share-media.js"></script>
+    <script src="js/record-points/components/hy-video-list.js"></script>
+    <script src="js/record-points/components/hy-share-options.js"></script>
+    <script src="js/record-points/components/hy-record-points-summary.js"></script>
+    <script src="js/record-points/services/Camera.js"></script>
+    <script src="js/record-points/services/Activity.js"></script>
+    <script src="js/record-points/controllers/PointsController.js"></script>
+
+    <script src="js/stats/stats.js"></script>
+    <script src="js/stats/components/hy-stats-profile.js"></script>
+    <script src="js/stats/components/hy-stats-chart-points.js"></script>
+    <script src="js/stats/components/hy-stats-chart-training.js"></script>
+    <script src="js/stats/components/hy-stats-chart-power.js"></script>
+    <script src="js/stats/components/hy-stats-chart-achievement.js"></script>
+    <script src="js/stats/components/hy-stats-chart-inspiration.js"></script>
+    <script src="js/stats/services/Chart.js"></script>
+
+    <script src="js/badges/badges.js"></script>
+    <script src="js/badges/components/hy-badges-profile.js"></script>
+    <script src="js/badges/components/hy-badges-ranks.js"></script>
+    <script src="js/leaderboard/leaderboard.js"></script>
+    <script src="js/leaderboard/controllers/LeaderboardController.js"></script>
+    <script src="js/leaderboard/components/hy-leaderboard-list.js"></script>
+    <script src="js/leaderboard/components/hy-leaderboard-actions.js"></script>
+
+    <script src="js/training/training.js"></script>
+    <script src="js/training/services/TrainingStore.js"></script>    
+    <script src="js/training/controllers/TrainingController.js"></script>
+    <script src="js/training/services/MediaList.js"></script>
+    <script src="js/training/services/Taxonomy.js"></script>
+    <script src="js/training/services/Trainer.js"></script>
+    <script src="js/training/services/Module.js"></script>    
+    <script src="js/training/services/Purchase.js"></script>
+    <script src="js/training/services/TrainerModule.js"></script>
+    <script src="js/training/components/hy-training-divisions.js"></script>
+    <script src="js/training/components/hy-training-trainers.js"></script>
+    <script src="js/training/components/hy-training-modules-search.js"></script>
+    <script src="js/training/components/hy-training-trainer-modules.js"></script>
+    <script src="js/training/components/hy-training-module-list.js"></script>
+    <script src="js/training/components/hy-training-module-profile.js"></script>    
+    <script src="js/training/components/hy-training-module-purchase.js"></script>
+    <script src="js/training/components/hy-training-module-purchase-error.js"></script>
+
+  </head>
+  <body ng-app="hyper" data-ng-controller="CoreController" class="platform-android platform-cordova platform-webview platform-ios platform-cordova platform-webview">
+    <div id="playerContent" style="width: 1px; height: 1px; position: absolute; top: -9999px; left: -9999px;"></div>
+    <ion-nav-view></ion-nav-view>
+  </body>
+  <script>
+  document.addEventListener("deviceready", onDeviceReady, false);
+  alert("vfsbvj");
+  function onDeviceReady() {
+      alert("12");
+      alert(JSON.stringify(device));
+  console.log(device.cordova);
+  }
+  </script>
+</html>

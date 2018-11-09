@@ -1,0 +1,36 @@
+<ion-view class="training-view" hide-back-button="true" ng-controller="TrainingController" ng-init="init()">
+  <ion-nav-title>
+    <span>TRAINING</span>
+  </ion-nav-title>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+    </button>
+  </ion-nav-buttons>
+  <ion-content>
+      <div class="content-box">
+        <div class="row section-title">
+            <div class="col firstcol">
+                SELECT A DIVISION
+            </div>
+        </div>
+        <div class="row divisions">
+            <div ng-if="training.tiles && training.tiles.divisions">
+                <hy-training-divisions divisions="training.tiles.divisions" ></hy-training-divisions>
+            </div>
+        </div>
+        <div class="row section-title padding-t-5">
+            <div class="col padding-t-10">
+                CHOOSE A TRAINER
+            </div>
+            <div class="col trainer-filter-button" ng-click="modalShow()">
+                <div class="pull-right"><span class="text-uppercase">{{training.filterTrainer?training.filterTrainer:"ALL TRAINERS"}}</span> <i class="atl-chevron-with-circle-down"></i></div>
+            </div>
+        </div>
+        <div class="row trainers">
+            <div ng-if="training.trainers">
+                <hy-training-trainers trainers="training.trainers" filter="filterTerm" ></hy-training-trainers>                
+            </div>
+        </div>
+      </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,58 @@
+<form name="signupForm"  ng-submit="createAccount('local');" novalidate="">
+  <div class="row">
+    <div class="col no-padding">
+        <hy-facebook-login text="REGISTER WITH FACEBOOK" cancel-path="signup" modal="signupModal"  error-message="errorMessage" ></hy-facebook-login>
+    </div>
+  </div>
+  <div class="row or-text">
+    <div class="col no-padding">
+      <label>
+        <hr />
+        <span>OR</span>
+      </label>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="form-input" ng-class="{ 'has-error' : signupForm.username.$invalid && (signupForm.$submitted || !signupForm.username.$pristine) }">
+      <input type="text" name="username" placeholder="Username*" ng-model="signup.username" required>
+    </div>
+     <span ng-show="signupForm.username.$invalid && (signupForm.$submitted || !signupForm.username.$pristine)" class="error-message">Please type a valid username</span>
+  </div>
+  <div class="form-group">
+    <div class="form-input" ng-class="{ 'has-error' : signupForm.email.$invalid && (signupForm.$submitted || !signupForm.email.$pristine) }">
+      <input type="email" name="email" placeholder="Email*" ng-model="signup.email" required>
+    </div>
+    <span ng-show="signupForm.email.$invalid && (signupForm.$submitted || !signupForm.email.$pristine)" class="error-message">Please type a valid email</span>    
+  </div>
+  <div class="form-group">
+    <div class="form-input" ng-class="{ 'has-error' : signupForm.userPassword.$invalid && (signupForm.$submitted || !signupForm.userPassword.$pristine) }">
+      <input class="col" type="password" name="userPassword" placeholder="Password*" ng-model="signup.password" required>
+    </div>
+    <span ng-show="signupForm.userPassword.$invalid && (signupForm.$submitted || !signupForm.userPassword.$pristine)" class="error-message">Please type a valid password</span>    
+  </div>
+  <div class="form-group">
+    <div class="form-input" ng-class="{ 'has-error' : signupForm.confirmPassword.$invalid && (signupForm.$submitted || !signupForm.confirmPassword.$pristine) || ( !signupForm.confirmPassword.$pristine && signup.password != signup.confirmPassword)}">
+      <input class="col" type="password" name="confirmPassword" placeholder="Confrm Password*" ng-model="signup.confirmPassword" required>
+    </div>
+    <span ng-show="signupForm.confirmPassword.$invalid && (signupForm.$submitted || !signupForm.confirmPassword.$pristine)" class="error-message">Please confirm your password</span>
+    <span ng-show="!signupForm.confirmPassword.$pristine && (signup.password !== signup.confirmPassword) && signup.confirmPassword.length > 0" class="error-message">Confirm Password doesn't match!</span>
+  </div>
+  <div class="row sign-up-toggle">
+    <div class="col no-padding">
+      <ion-toggle class="toggle-terms" ng-model="signup.aggreed"></ion-toggle>
+      <div class="toggle-span">I Agree with the <a href="" data-ng-click="openPrivacyLink()">Hyper Privacy Policy</a> and <a href="" data-ng-click="openModal();">Terms of Service</a></div>
+    </div>
+  </div>
+  <div class="row" ng-show="(errorMessage.length > 0)">
+    <div class="col alert alert-error">
+      {{errorMessage}} !
+    </div>
+  </div>
+  <div class="row">
+    <div class="col no-padding"  ng-class="{'button-error' : (getFormButtonMode() == 'FIX') }">
+        <button type="submit" class="button button-block large-button-font button-black" ng-disabled="(getFormButtonMode() == 'DISABLED' || getFormButtonMode() == 'FIX')">
+            {{ (getFormButtonMode() == 'FIX') ? 'PLEASE FIX ERROR' : 'CREATE ACCOUNT' }}
+        </button>
+    </div>
+  </div>
+</form>

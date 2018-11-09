@@ -1,0 +1,22 @@
+<div>
+  <div class="chart-container chart-points">
+    <div class="row chart-header">
+      <div class="col col-70 text-center text-left">TOTAL POINTS THIS WEEK</div>
+       <div class="col points-chart-title pull-right text-right text-uppercase">{{externalPointsTitle}}</div>
+    </div>
+    <div class="row">
+      <div id="chartTotalPoints" class="col" style="padding:0;width:98%;height:50vw"></div>
+    </div>
+    <div class="row chart-stats">
+      <div class="col text-center">
+        <p class="item-sub-detail">{{ weeklyStats.athlete.total }}</p>
+        <p class="item-week-stat">PTS THIS WEEK</p>
+        <span class="devider"></span>
+      </div>
+      <div class="col text-center">
+        <p class="item-sub-detail">{{ monthlyStats.athlete.total }}</p>
+        <p class="item-week-stat">PTS THIS MONTH</p>
+      </div>
+    </div>
+  </div>
+</div>

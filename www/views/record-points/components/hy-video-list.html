@@ -1,0 +1,15 @@
+<ion-modal-view class="record-points-gallery">
+ <ion-header-bar class="modal-header">
+   <h1 class="title">Videos</h1>
+   <div class="button button-clear" ng-click="modalVideo.hide()"><span class="icon ion-close"></span></div>
+ </ion-header-bar>
+ <ion-content hy-video-list class="modal-content">
+   <div>
+    <div ng-repeat="video in videos" class="gallery-container">
+      <div ng-click="openModalShare();" class="gallery-item"><i class="fa fa-film fa-3x"></i></div>
+      <div ng-click="openModalShare();" class="gallery-item"><i class="fa fa-film fa-3x"></i></div>
+      <div ng-click="openModalShare();" class="gallery-item"><i class="fa fa-film fa-3x"></i></div>
+    </div>
+   </div>
+ </ion-content>
+</ion-modal-view>

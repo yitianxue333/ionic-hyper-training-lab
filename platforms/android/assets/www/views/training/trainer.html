@@ -1,0 +1,16 @@
+<ion-view class="trainer-view" hide-back-button="false">
+  <ion-nav-title>
+    <span>TRAINER</span>
+  </ion-nav-title>
+  <div class="bar bar-subheader row trainer-subheader-filter" ng-init="tabSettings = { active_tab: 'modules', noBio : false };" ng-hide="tabSettings.noBio">
+    <div class="col col-6 text-center border-right" ng-class="{ active : (tabSettings.active_tab == 'modules') }" ng-click="tabSettings.active_tab='modules'">
+        TRAINING
+    </div>
+    <div class="col col-6 text-center" ng-class="{ active : (tabSettings.active_tab=='bio') }" ng-click="tabSettings.active_tab='bio'">
+        BIO
+    </div>
+  </div>
+  <ion-content class="has-header has-subheader" ng-class="{ 'no-tab' : tabSettings.noBio }" hy-page-swiper>
+    <hy-training-trainer-modules settings="tabSettings" ></hy-training-trainer-modules>
+  </ion-content>
+</ion-view>

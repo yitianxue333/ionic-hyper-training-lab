@@ -1,0 +1,42 @@
+<div class="row leaderboard-foot">
+  <div class="leaderboard-jump-popover" ng-class="{'jump-slideup': showJump, 'jump-slidedown': !showJump}">
+    <div class="menu-content">
+      <div>
+        <div class="row button-tab" ng-click="jumpToTop()">
+          TOP
+        </div>
+        <div class="row button-tab" ng-click="jumpToMyRank()">
+          MY {{(board.query.type=='school') ? 'SCHOOL':'RANK'}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="leaderboard-points-popover" ng-class="{'points-slideup': showPoints, 'points-slidedown': !showPoints}">
+    <div class="menu-content">
+      <div>
+        <div ng-hide="board.query.pointsType=='all'" class="row text-center button-tab" ng-click="setPointsType('all')">
+          ALL POINTS
+        </div>
+        <div ng-hide="board.query.pointsType=='train'"  class="row text-center button-tab" ng-click="setPointsType('train')">
+          TRAINING POINTS
+        </div>
+        <div ng-hide="board.query.pointsType=='achieve'"  class="row text-center button-tab" ng-click="setPointsType('achieve')">
+          ACHIEVEMENT POINTS
+        </div>
+        <div ng-hide="board.query.pointsType=='influence'" class="row text-center button-tab" ng-click="setPointsType('influence')">
+          INSPIRATION POINTS
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col text-center button-tab" ng-click="showPoints=!showPoints">
+    <span ng-if="board.query.pointsType=='train'">training points</span>
+    <span ng-if="board.query.pointsType=='achieve'">achievement points</span>
+    <span ng-if="board.query.pointsType=='influence'">inspiration points</span>
+    <span ng-if="board.query.pointsType=='all'">all points</span>
+  </div>
+  <div class="col text-center button-tab" ng-click="showJump=!showJump">
+    JUMP TO
+    <span class="menu-devider"></span>
+  </div>
+</div>

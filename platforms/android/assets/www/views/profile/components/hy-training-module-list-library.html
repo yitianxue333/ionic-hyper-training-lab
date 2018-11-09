@@ -1,0 +1,32 @@
+<div class="training-modules-list" ng-cloak>
+    <div class="list-item {{module.primaryDivision.toLowerCase()}} pull-left" ng-repeat="module in modules.list" ng-class="{ disabled : (module.status == 'disable'), licensed : (module.licensed) }">
+        <div class="disable-overlay">
+            <span class="hy-font-family">COMING SOON  </span>
+        </div>
+        <div class="module-thumb pull-left">
+            <img ng-src="{{module.images.thumb.url}}" alt="{{module.images.thumb.title}}" />
+            <div class="module-thumb-title text-uppercase">{{module.primaryDivision}}</div>
+        </div>
+        <div class="block-content module-data pull-left" ui-sref="app.module({moduleId: module._id})" >
+            <i class="atl-chevron-thin-right pull-right"></i>
+            <h2 class="module-title text-uppercase elipsis-2-lines">{{module.title}}</h2>
+            <div class="purchase-date text-uppercase text-ellipsis">
+                <strong>Purchased: </strong> {{module.purchasedOn | date:'MM/dd/yyyy'}}
+            </div>
+        </div>
+    </div>
+    <div class="list-item text-center no-lisenced-modules" ng-show="modules.list.length == 0" >
+        <div><strong>You currently do not have any modules in your library.</strong></div>
+        <div>Purchase and unlock modules to see them show up here.</div>
+    </div>
+    <div class="list-item text-center restore-success" ng-show="restored">
+        <div><strong>Restoration Complete!</strong></div>
+        <div>All modules purchased from iTunes has been restored</div>
+    </div>
+    <div class="list-item text-center restore-error" style="" ng-show="restoreError">
+        <div class="restore-error-title">THERE WAS AN ERROR!</div>
+        <div class="restore-error-message">{{errorMessage}}</div>
+    </div>
+    <!--div class="padding-list" ng-hide="(modules.list|filter:type=='workout').length >0"></div-->
+    <button ng-if="isPlatformIOS" ng-click="restoreProduct()" id="restore-button" class="button button-block restore-button">RESTORE PRODUCTS</button>
+</div>

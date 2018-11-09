@@ -1,0 +1,34 @@
+<ion-modal-view class="badge-modal" >
+  <ion-content class="modal-content" scroll="false">
+    <div class="share-preview-header bar bar-header disable-user-behavior black-header">
+      <button class="close-button black-header-close pull-left" on-tap="modalBadgeInfo.remove()"><img ng-src="img/header-black-close.png" src="img/header-black-close.png"></button>
+    </div>
+    <div class="panel panel-default">
+      <div class="row preview-thumb">
+        <div class="col">
+             <img ng-src="{{currentBadge.urls.png}}"/>
+        </div>
+      </div>
+      <div class="row share">
+        <div class="col hy-font-family text-uppercase title">
+             {{currentBadge.label}}
+        </div>
+      </div>
+      <div class="row details">
+        <div class="col">
+             {{currentBadge.desc}}
+        </div>
+      </div>
+<!--     <div class="row badge-media" ng-class="{'un-ranked': (currentBadge.ranks.length < 2 || !currentBadge.ranked)}">-->
+<!--        <div class="col text-center">-->
+<!--            <span ng-show="currentBadge.ranked">-->
+<!--                -->
+<!--                <a ng-hide="!facebookInfo.accessToken || successMessage" ng-click="shareSuccess()" href="" class="button button-block button-facebook large-button-font no-margin"><i class="icon icon-facebook pull-left"></i><span>SHARE BADGE STATUS</span></a>-->
+<!--                <a ng-hide="facebookInfo.accessToken || successMessage" ng-click="connectFacebook()" href="" class="button button-block button-facebook large-button-font no-margin"><i class="icon icon-facebook pull-left"></i><span>CONNECT FACEBOOK</span></a>-->
+<!--                <a ng-show="successMessage"  ng-click="connectFacebook()" href="" class="button button-block button-facebook large-button-font no-margin"><i class="icon icon-facebook pull-left"></i><span>SUCCESSFULLY SHARED</span></a>-->
+<!--            </span>-->
+<!--        </div>-->
+<!--    </div>-->
+  </div>
+  </ion-content>
+</ion-modal-view>

@@ -1,0 +1,37 @@
+<div>
+  <div class="row summary">
+    <div class="col col-center summary-item margin-right">
+      <div class="summary-title"><span>TRAIN</span></div>
+      <div class="summary-detail">
+        <div class="summary-point">{{ summary.train }}</div>
+        <div class="pts">PTS</div>
+      </div>
+    </div>
+    <div class="col col-center summary-item margin-left">
+      <div class="summary-title"><span>ACHIEVE</span></div>
+      <div class="summary-detail">
+        <div class="summary-point">{{ summary.achieve }}</div>
+        <div class="pts">PTS</div> 
+      </div>
+    </div>
+    <div class="col col-center summary-item margin-right">
+      <div class="summary-title"><span>INSPIRE</span></div>
+      <div class="summary-detail">
+        <div class="summary-point"> {{ summary.inspire }}</div>
+        <div class="pts">PTS</div>
+      </div>
+    </div>
+    <div class="col col-center summary-item margin-left">
+      <div class="summary-title"><span>TOTAL</span></div>
+      <div class="summary-detail summary-total">
+        <div class="summary-point">{{ summary.train + summary.achieve + summary.inspire + summary.media }}</div>
+        <div class="pts">PTS</div> 
+      </div>
+    </div>
+  </div>
+  <div class="record-your-points-button">
+    <button class="button button-large button-block button-black" on-tap="recordPoints()">
+      <div class="recordButton"><span>RECORD YOUR POINTS</span><i class="icon-rp-tick"></i></div>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<ion-modal-view hide-nav-bar="true" class="sign-up-view auth-popup" hide-back-button="true"> 
+  <ion-header-bar class="col-top text-center">
+		<div class="header-title">
+			<img src="img/hyper-auth-logo.svg" />
+		</div>
+		<div class="header-close">
+			<a href="" ng-click="signupModal.hide()">
+				<i class="icon icon-close"></i>
+			</a>
+		</div>
+	</ion-header-bar>
+  <ion-content class="sign-up-container" has-header="true" padding="true">
+		<span class="sub-title">
+      A single account gives you access to all HYPER services and sites.
+    </span>
+  	<hy-signup></hy-signup>
+  </ion-content>
+</ion-modal-view>

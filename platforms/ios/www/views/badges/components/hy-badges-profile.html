@@ -1,0 +1,38 @@
+<div class="badges-list">
+    <div class="list-item pull-left" ng-repeat="badge in badges" ng-if="badge.ranked" on-tap="showInfo($index)">
+        <div class="badge-thumb pull-left">
+            <span class="helper"></span><img ng-src="{{badge.urls.png}}"/>
+        </div>
+        <div class="block-content module-data pull-left">
+            <i class="atl-chevron-thin-right pull-right"></i>
+            <h2 class="module-title text-uppercase elipsis-2-lines">{{badge.label}}</h2>
+            <div class="text-uppercase text-ellipsis text-detail">
+                <strong  ng-if="badge.rank_label" >{{badge.rank_label}}:</strong> LEVEL {{badge.level}}
+            </div>
+            <div class="text-ellipsis text-detail">
+                <strong>{{badge.progress?badge.progress.toFixed(1) : 0 }}%</strong> Towards next Rank
+            </div>
+        </div>
+    </div>
+
+    <div class="no-badge" ng-if="!ranked">
+      <div class="row title">
+        <div class="col text-center hy-font-family">
+        IT LOOKS LIKE YOU NEED
+        TO EARN YOUR FIRST BADGE!
+        </div>
+      </div>
+      <div class="row description">
+        <div class="col text-center">
+          Record some points to start unlocking badges in this section.
+        </div>
+      </div>
+      <div class="row no-padding">
+        <div class="col no-padding">
+              <button class="button button-block button-black" ui-sref="app.recordPoints" >
+                RECORD SOME POINTS
+              </button>
+        </div>
+      </div>
+    </div>
+</div>

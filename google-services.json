@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "787538134641",
+    "firebase_url": "https://hyper-training-lab.firebaseio.com",
+    "project_id": "hyper-training-lab",
+    "storage_bucket": "hyper-training-lab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:787538134641:android:fde91d39c636292f",
+        "android_client_info": {
+          "package_name": "com.hypermartialarts.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "787538134641-vobdgp3vf60ruks48t79oeh2ufsercrl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDL0tMpo6BPV2UmqrfWCmZxYXetsYwKiqc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

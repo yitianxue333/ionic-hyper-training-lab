@@ -1,0 +1,62 @@
+<div class="hy-training-module-profile" ng-init="init()">
+    <div class="top-section" ng-class="module.primaryDivision.toLowerCase()">
+        <img class="profile" ng-style="poster" />
+        <div class="module-title text-uppercase">
+            <div>
+                <span>{{module.title}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="licensed-status notpurchased" ng-if="!module.licensed && module.price > 0 && module.sku != null">
+        <span>Want to unlock videos in this module?</span>
+        <img src="img/purchased-btn.png" ui-sref="app.purchase({moduleId: module._id})" />
+    </div>
+    <div class="licensed-status purchased" ng-if="module.licensed">
+        <span>All videos are now unlocked</span>
+        <img src="img/purchased.png" />
+    </div>
+    <div class="mid-section">
+        <div ng-repeat="tax in module.taxonomy" key={tax.singular} class="module-terms module-{{tax.singular.toLowerCase()}} text-uppercase text-ellipsis">
+            <strong>{{tax.singular}}:</strong> {{tax.terms.join(', ')}}
+        </div>
+    </div>
+    
+    <div class="video-list">
+        <div class="video-group" ng-repeat="videoGroup in module.videoGroups.list" ng-class="{ 'disabled' : (videoGroup.status == 'disable') }">
+            <h3 class="group-name text-uppercase">{{videoGroup.title}}</h3>
+            <div ng-repeat="video in videoGroup.videos"  ng-if="videoGroup.status != 'disable'">
+                <a class="playlist-item" href="" ng-click="play(video)" ng-if="!video.locked">
+                    <i class="atl-circle-play-full"></i>
+                    {{video.title}}
+                </a>
+                <a class="playlist-item" ng-class="{ 'locked-video' : (video.locked) }" ng-if="video.locked">
+                    <i class="si si-lock"></i>
+                    {{video.title}}
+                </a>
+
+            </div>
+            <a class="playlist-item" ng-repeat="video in videoGroup.videos" ng-if="videoGroup.status == 'disable'">
+                <i class="si si-lock"></i>
+                {{video.title}}
+            </a>
+        </div>
+    </div>
+
+    <div class="bottom-section trainer-profile">
+        <i class="atl-chevron-thin-right pull-right"></i>
+       <div class="block-content" ng-if="currentTrainers.length === 1" ui-sref="app.trainer({trainerId: currentTrainers[0]._id})" >
+            <img class="profile-image" ng-src="{{currentTrainers[0].images.thumb.url}}" alt="{{currentTrainers[0].images.thumb.title}}" />
+            <div class="info">
+                <h1 class="title text-uppercase">{{currentTrainers[0].name}}</h1>
+            </div>
+        </div>
+        <div class="block-content" ng-if="currentTrainers.length > 1" ui-sref="app.trainers({trainerId: trainerParams() })">
+            <div class="multi-trainer">
+                <img class="profile-image" ng-src="{{trainer.images.thumb.url}}" alt="{{trainer.images.thumb.title}}" ng-repeat="trainer in currentTrainers"/>
+            </div>
+            <div class="info">
+                <h1 class="title text-uppercase">{{currentTrainers[0].name}} & {{currentTrainers[1].name}}  </h1>
+            </div>
+        </div>
+    </div>
+</div>

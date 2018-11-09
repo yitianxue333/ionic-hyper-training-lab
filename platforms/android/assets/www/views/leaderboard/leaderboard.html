@@ -1,0 +1,37 @@
+<ion-view class="leaderboard-view" ng-controller="LeaderboardController" hide-back-button="true">
+  <div class="menu-overlay" ng-show="showPoints || showJump" ng-click="showPoints=false;showJump=false;"></div>
+  <ion-nav-title>
+    <span>LEADERBOARDS</span>
+  </ion-nav-title>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+    </button>
+  </ion-nav-buttons>
+<!--  <ion-header-bar class="bar-subheader has-message" >-->
+<!--    <div class="row leaderboard-head">-->
+<!--       <div class="col text-center button-tab" ng-class="{ active: board.query.type=='world'}">-->
+<!--        WORLD</div>-->
+<!--         <div class="tab-devider"></div>
+     <!--  <div class="col text-center button-tab" ng-click="setType('world')" ng-class="{ active: board.query.type=='world'}">
+        WORLD
+        <div class="tab-devider"></div>
+      </div> -->
+    <!--   <div class="col text-center button-tab"  ng-click="setType('school')" ng-class="{ active: board.query.type=='school'}">
+        SCHOOLS
+        <div class="tab-devider"></div>
+      </div>
+      <div class="col text-center button-tab"  ng-click="setType('region')" ng-class="{ active: board.query.type=='region'}">
+        REGION
+      </div> -->
+<!--    </div>-->
+<!--</ion-header-bar>-->
+<ion-content ng-class="{ 'no-footer': (board.query.type == 'region') }">
+  <hy-leaderboard-list ng-hide="board.query.type == 'region'"></hy-leaderboard-list>
+  <div class="coming-soon" ng-show="board.query.type == 'region'">
+    <span>COMING SOON</span>
+  </div>  
+</ion-content>
+<ion-footer-bar align-title="left" class="bar-assertive" ng-hide="board.query.type == 'region'">
+  <hy-leaderboard-actions></hy-leaderboard-actions>
+</ion-footer-bar>
+</ion-view>

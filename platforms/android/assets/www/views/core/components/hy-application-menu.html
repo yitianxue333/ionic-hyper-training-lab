@@ -1,0 +1,63 @@
+<div class="application-menu" ng-init="initMenu()" >
+  <ion-side-menu side="left" class="main-menu" width="400">
+    <ion-header-bar class="bar bar-header disable-user-behavior black-header side-menu-header" align-title="center">
+      <button class="close-button pull-left"  menu-close>
+        <img ng-src="img/header-black-close.png" /> 
+      </button>
+      <div class="title title-center header-item" style="left: 45px; right: 45px;">
+        <span class="nav-bar-title">
+            <i class="atl-icon"></i>
+            <i class="atl-yper"></i>
+        </span>
+      </div>
+      <div class="buttons buttons-right header-item">
+        <span class="right-buttons">
+          <button class="button button-icon button-clear profile-link"  menu-close  ui-sref="app.settings" ui-sref-opts="{reload: true}" href="#/app/settings/">
+            <img ng-src="{{ userProfileImageUrl }}" />
+          </button>
+        </span>
+      </div>
+    </ion-header-bar>
+    <ion-content>
+      <ion-list>
+        <ion-item class="item-icon-left top-item" nav-clear menu-close ui-sref="app.dashboard">
+          <i class="icon icon-dashboard"></i>
+          <h2 class="menu-text">Dashboard</h2>
+        </ion-item>
+        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.training">
+          <i class="icon icon-training"></i>
+          <h2 class="menu-text">Training</h2>
+        </ion-item>
+        <ion-item class="item-icon-left" menu-close menu-close ui-sref="app.myLibrary">
+          <i class="icon icon-library"></i>
+          <h2 class="menu-text">My Library</h2>
+        </ion-item>        
+        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.stats">
+          <i class="icon icon-stats"></i>
+          <h2 class="menu-text">Stats</h2>
+        </ion-item>
+        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.recordPoints">
+          <i class="icon icon-recordpoints"></i>
+          <h2 class="menu-text">Record Points</h2>
+        </ion-item>
+        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.badges">
+          <i class="icon icon-badges"></i>
+          <h2 class="menu-text">Hyper Badges</h2>
+        </ion-item>
+        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.leaderboard">
+          <i class="icon icon-leaderboad"></i>
+          <h2 class="menu-text">Leaderboards</h2>
+        </ion-item>
+        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.getHelp">
+          <!--<span class="ion-help-circled"></span>-->
+          <i class="icon ion-ios-help-outline"></i>
+          <h2 class="menu-text" on-tap="getHelp()">Get Help</h2>
+        </ion-item>
+        <ion-item class="item-icon-left" nav-clear menu-close href="" data-ng-click="logout()">
+          <i class="icon ion-power"></i>
+          <h2 class="menu-text" on-tap="logout()">Logout</h2>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</div>

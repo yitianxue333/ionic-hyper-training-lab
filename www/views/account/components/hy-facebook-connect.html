@@ -1,0 +1,24 @@
+<div>
+  <div class="row padding-h-5" ng-hide="successMessage">
+    <div class="col no-padding">
+      <label>
+          <a on-tap="facebookConnect()" ng-if="!linked" href="" class="button button-block button-facebook large-button-font no-margin"><i class="icon icon-facebook pull-left"></i><span>CONNECT YOUR FACEBOOK ACCOUNT</span></a>
+          <a on-tap="facebookDisconnect()" ng-if="linked" href="" class="button button-block button-facebook large-button-font no-margin"><i class="icon icon-facebook pull-left"></i><span class="text-uppercase">DISCONNECT {{linked.name}}</span></a>
+      </label>
+    </div>
+  </div>
+  <div class="row padding-h-5" ng-show="successMessage">
+    <div class="col no-padding">
+      <div class="button button-block large-button-font button-success no-margin text-uppercase no-events">
+        SUCCESSFULLY CONNECTED
+      </div>
+    </div>
+  </div>
+  <div class="row" ng-show="(fbErrorMessage.length > 0)">
+    <div class="col alert alert-error">
+      {{fbErrorMessage}} !
+    </div>
+  </div>
+
+
+</div>

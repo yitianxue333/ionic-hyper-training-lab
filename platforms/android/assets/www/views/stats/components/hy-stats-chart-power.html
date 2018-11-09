@@ -1,0 +1,35 @@
+<div>
+  <div class="chart-container chart-size">
+    <div class="row chart-header">
+        <div class="col col-70 text-center text-left">TRAINING POWER</div>
+       <div class="col points-chart-title pull-right text-right text-uppercase">{{externalPowerTitle}}</div>
+    </div>
+    <div class="row chart-body">
+      <div id="chartPowerPoints" class="col" style="padding:0;width:98%;height:60vw"></div>
+    </div>
+    <div class="row power-stats top-row">
+      <div class="col text-center legend-forms">
+        <span>FORMS</span>
+        <p class="item-sub-detail">{{  power.forms }}</p>
+        <p class="points">PTS THIS WEEK</p>
+      </div>
+      <div class="col text-center legend-weapons">
+        <span>WEAPONS</span>
+        <p class="item-sub-detail">{{ power.weapons }}</p>
+        <p class="points">PTS THIS WEEK</p>
+      </div>
+    </div>
+    <div class="row power-stats bottom-row">
+      <div class="col text-center legend-tricking">
+        <span>TRICKING</span>
+        <p class="item-sub-detail">{{ power.tricking }}</p>
+        <p class="points">PTS THIS WEEK</p>
+      </div>
+      <div class="col text-center legend-sparring">
+        <span>SPARRING</span>
+        <p class="item-sub-detail">{{ power.sparring }}</p>
+        <p class="points">PTS THIS WEEK</p>
+      </div>
+    </div>
+  </div>
+</div>

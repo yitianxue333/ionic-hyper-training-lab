@@ -1,0 +1,22 @@
+<ion-view hide-nav-bar="true" class="login-view auth-popup" hide-back-button="true">
+  <ion-header-bar class="col-top">
+		<div class="header-title">
+			<img src="img/hyper-auth-logo.svg">
+		</div>
+	</ion-header-bar>
+  <ion-content class="login-container" has-header="true" padding="true">
+      <div class="row">
+        <div class="col">
+          <div class="text-justify">
+            We apologize for the inconvenience but it appears that there has been a problem retrieving your Facebook account information.
+            Please return to registration and try signing up directly.
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+            <button class="button button-block large-button-font button-black" type="submit" ui-sref="home({ show : 'signup' })">GO BACK TO REGISTRATION</button>
+        </div>
+      </div>
+  </ion-content>
+</ion-view>

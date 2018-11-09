@@ -1,0 +1,70 @@
+<div class="hy-training-trainer-modules" ng-init="init()">
+    <div class="trainer-profile text-center" ng-class="{ bio  : (settings.active_tab=='bio') }">
+        <div class="block-content" ng-if="trainers.length === 1">
+            <img class="profile-image" ng-src="{{trainers[0].images.thumb.url}}" alt="{{trainers[0].images.thumb.title}}" />
+            <div class="info">
+                <h1 class="title text-uppercase">{{trainers[0].name}}</h1>
+                <div class="trainer-profile-stats text-uppercase text-left">
+                    <div class="stat-row text-muted border-bottom border-top">
+                        <i class="atl-bolt" /> <span class="text-muted">Training Modules</span>
+                        <span class="pull-right text-muted">{{moduleCount}}</span>
+                    </div>
+                    <div class="stat-row text-muted border-bottom">
+                        <i class="atl-circle-play-full" /> <span class="text-muted">Videos</span>
+                        <span class="pull-right text-muted">{{videoCount}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="block-content" ng-if="trainers.length > 1">
+            <div class="multi-trainer">
+                <img class="profile-image" ng-src="{{trainer.images.thumb.url}}" alt="{{trainer.images.thumb.title}}" ui-sref="app.trainer({trainerId: trainer._id})"  ng-repeat="trainer in trainers" />
+            </div>
+            <div class="info">
+                <h1 class="title text-uppercase">{{trainers[0].name}} & {{trainers[1].name}} </h1>
+                <div class="trainer-profile-stats text-uppercase text-left">
+                    <div class="stat-row text-muted border-bottom border-top">
+                        <i class="atl-bolt" /> <span class="text-muted">Training Modules</span>
+                        <span class="pull-right text-muted">{{moduleCount}}</span>
+                    </div>
+                    <div class="stat-row text-muted border-bottom">
+                        <i class="atl-circle-play-full" /> <span class="text-muted">Videos</span>
+                        <span class="pull-right text-muted">{{videoCount}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="trainer-modules" ng-if="settings.active_tab=='modules'">
+        <div class="video-list" ng-if="intro && intro.list.length > 0" ng-repeat="introModule in intro.list">
+            <div class="video-group" ng-repeat="videoGroup in introModule.videoGroups.list">
+                <h3 class="group-name text-uppercase">{{videoGroup.title}}</h3>
+                <a class="playlist-item" href="" ng-click="play(introModule, video, 'intro')" ng-repeat="video in videoGroup.videos">
+                    <i class="atl-circle-play-full"></i>
+                    {{video.title}}
+                </a>
+            </div>
+        </div>
+        <div class="video-list" ng-if="workout && workout.list.length > 0" >
+            <div class="video-group" style="padding-top:1px">
+                <h3 class="group-name text-uppercase">WORKOUTS</h3>                
+                <!--<a class="playlist-item" href="" ng-click="play(workModule, video, 'workout')" ng-repeat="video in videoGroup.videos">
+                    <i class="atl-circle-play-full"></i>
+                    {{video.title}}
+                </a>-->
+            </div>
+            <hy-training-module-list modules="workout"></hy-training-module-list>
+        </div>
+        <div class="clearfix"></div>
+        <div class="video-list" ng-if="modules && modules.list.length > 0">
+            <div class="video-group">
+                <h3 class="group-name text-uppercase">TRAINING MODULES</h3>
+            </div>
+            <hy-training-module-list modules="modules"></hy-training-module-list>
+            
+        </div>
+    </div>
+    <div class="trainer-bio" ng-if="settings.active_tab=='bio'">
+        <p ng-bind-html="to_trusted(trainers[0].desc)" ></p>
+    </div>
+</div>

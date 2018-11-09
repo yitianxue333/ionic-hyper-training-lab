@@ -1,0 +1,14 @@
+<div>
+  <ion-content>
+      <div class="bottom-content">
+        <div class="profile-info">
+          <div ng-if="hasValidToken()">
+            <hy-account-info></hy-account-info>
+          </div>
+          <div ng-if="!hasValidToken()">
+            <hy-confirm-account></hy-confirm-account>
+          </div>
+        </div>
+      </div>
+  </ion-content>
+</div>

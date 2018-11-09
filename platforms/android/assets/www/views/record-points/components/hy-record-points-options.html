@@ -1,0 +1,34 @@
+<ion-modal-view class="record-points-options record-points-view " >
+  <ion-header-bar class="bar-header record-options-header">
+    <a class="button button-clear" on-tap="close()"><i class="icon icon-close"></i></a>
+    <h1 class="title hy-font-family">PRACTICE TYPE</h1>
+  </ion-header-bar>
+  <ion-content class="modal-content">
+    <div class="panel panel-default">
+        <ion-list>
+          <ion-item class="rp-list-item" data-ng-repeat="option in activity.options" on-tap="close({ activity: activity, selected: option })">
+                <div class="rp-list-item-content">
+                    <div class="item-icon">
+                        <div class="untick"></div>
+                        <div class="tick {{filter}}" ng-show="activity.selected &&  (activity.selectedOption == option)">
+                            <i class="icon-rp-tick"></i>
+                        </div>
+                    </div>
+                    <div class="item-title">
+                        <span class="record-points-item">{{ option.label }}</span>
+                    </div>
+                    <div class="item-points">
+                        <span class="item-pts">
+                            {{ option.points }}
+                            <span class="sub-item-pts">
+                                PTS
+                            </span>
+                        </span>
+                    <div class="item-points-devider"></div>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+    </div>
+  </ion-content>
+</ion-modal-view>

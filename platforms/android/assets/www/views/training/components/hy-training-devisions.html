@@ -1,0 +1,12 @@
+<div class="hy-training-devisions">
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" ng-repeat="division in divisions" ng-init="$last && initSlider()" style="width:60vw">
+                <img class="slide-img" ng-src="{{division.attachments[0].url}}" alt="{{division.attachments[0].desc}}" ng-click="viewModules(division)">
+                <div class="text-content" ng-click="viewModules(division)">
+                    <h2 class="text-uppercase hy-font-family">{{division.label}}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

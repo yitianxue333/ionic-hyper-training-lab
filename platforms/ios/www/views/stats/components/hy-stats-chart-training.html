@@ -1,0 +1,24 @@
+<div data-ng-show="showTraining">
+  <div class="chart-container chart-size">
+    <div class="row chart-header">
+        <div class="col col-70 text-center text-left">TRAINING POINTS</div>
+       <div class="col points-chart-title pull-right text-right text-uppercase">{{externalTrainingTitle}}</div>
+    </div>
+    <div class="row">
+      <div id="chartTraining" class="col" style="padding:0;width:98%;height:50vw"></div>
+    </div>
+    <div class="row chart-stats">
+      <div class="col text-center">
+        <p class="item-sub-detail">{{ weeklyStats.train.total }}</p>
+        <p class="item-week-stat">PTS THIS WEEK</p>
+        <span class="devider"></span>
+      </div>
+      <div class="col text-center">
+        <img src="img/points-increse.svg" class="point-increse" ng-show="weeklyStats.train.difference > 0" />
+        <img src="img/points-increse.svg" class="point-decrease" ng-show="weeklyStats.train.difference < 0" />
+        <i class="icon icon-recordpoints point-equle" ng-show="weeklyStats.train.difference == 0" ></i>
+        <p class="item-week-stat"> {{weeklyStats.train.difference > 0 ? "UP": "" }} {{weeklyStats.train.difference < 0 ? "DOWN": "" }} {{weeklyStats.train.difference}} PTS THIS WEEK</p>
+      </div>
+    </div>
+  </div>
+</div>

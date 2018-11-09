@@ -1,0 +1,23 @@
+<ion-view hide-nav-bar="true" class="login-view auth-popup" hide-back-button="true">
+  <ion-header-bar class="col-top">
+		<div class="header-title">
+			<img src="img/hyper-auth-logo.svg">
+		</div>
+	</ion-header-bar>
+  <ion-content class="login-container" has-header="true" padding="true">
+      <div class="row">
+        <div class="col">
+          <div class="text-justify">
+          We apologize for the inconvenience but it appears that an account with the same email as your
+           Facebook account already exists.  You need to log into the pre-existing account, go to your profile,
+            and connect your Facebook account there.
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+            <button class="button button-block large-button-font button-black" type="submit" ui-sref="home({ show : 'login' })">GO BACK TO LOGIN</button>
+        </div>
+      </div>
+  </ion-content>
+</ion-view>

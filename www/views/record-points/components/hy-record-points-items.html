@@ -1,0 +1,76 @@
+<div> 
+  <hy-share-media></hy-share-media>
+  <ion-list data-ng-show="show">
+<!--    <ion-item ng-if="filter == 'train'" class="rp-list-item media" data-ng-repeat="activity in activities | filter:isMedia" data-ng-click="-->
+<!--    activity.name === 'image' ? (activity.selected) ? cancelSharing('image') : openPhotoLibrary(activity) :-->
+<!--                                (activity.selected) ? cancelSharing('video') : openVideoLibrary(activity)-->
+<!--    ">-->
+<!--      <div class="rp-list-item-content" ng-if="activity.name === 'image'">-->
+<!--        <div class="item-icon">-->
+<!--          <div class="unshare"></div>-->
+<!--          <div class="tick train" ng-show="activity.selected">-->
+<!--            <i class="icon-rp-fb"></i>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="item-title">-->
+<!--          <i class="icon-rp-icon_img"></i>-->
+<!--          <span class="record-points-item" ng-if="!activity.selected" >Share Training Photo</span>-->
+<!--          <span class="record-points-item" ng-if="activity.selected" >Your Photo Was Shared</span>-->
+<!--        </div>-->
+<!--        <div class="item-points">-->
+<!--          <span class="item-pts">{{ activity.points || activity.selected && activity.selectedOption.points || '...' }} <span class="sub-item-pts">{{ activity.points || activity.selected && activity.selectedOption.points ? 'PTS' : '' }}</span></span>-->
+<!--          <div class="item-points-devider"></div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="rp-list-item-content" ng-if="activity.name === 'video'">-->
+<!--        <div class="item-icon">-->
+<!--          <div class="unshare"></div>-->
+<!--          <div class="tick train" ng-show="activity.selected">-->
+<!--            <i class="icon-rp-fb"></i>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="item-title">-->
+<!--          <i class="icon-rp-icon_video"><span class="path1"></span><span class="path2"></span></i>-->
+<!--          <span class="record-points-item" ng-if="!activity.selected">Share Training Video</span>-->
+<!--          <span class="record-points-item" ng-if="activity.selected">Your Video Was Shared</span>-->
+<!--        </div>-->
+<!--        <div class="item-points">-->
+<!--          <span class="item-pts">{{ activity.points || activity.selected && activity.selectedOption.points || '...' }} <span class="sub-item-pts">{{ activity.points || activity.selected && activity.selectedOption.points ? 'PTS' : '' }}</span></span>-->
+<!--          <div class="item-points-devider"></div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </ion-item>-->
+    <ion-item class="rp-list-item" data-ng-repeat="activity in activities | filter:checkType" data-ng-click="displayOptions(activity, activity.selected);">
+      <div class="rp-list-item-content">
+        <div class="item-icon">
+          <div class="untick"></div>
+          <div class="tick {{filter}}" ng-show="activity.selected">
+            <i class="icon-rp-tick"></i>
+          </div>
+        </div>
+        <div class="item-title">
+          <span class="record-points-item">{{ activity.label }} <span class="record-points-item-detail text-uppercase">{{ activity.selected && activity.selectedOption? ("(" + activity.selectedOption.label + ")" ) : '' }}</span>
+</span>          
+        </div>
+        <div class="item-points">
+          <span class="item-pts">{{ activity.points || activity.selected && activity.selectedOption.points || '...' }} <span class="sub-item-pts">{{ activity.points || activity.selected && activity.selectedOption.points ? 'PTS' : '' }}</span></span>
+          <div class="item-points-devider"></div>
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>
+  <div class="row no-activity-message" data-ng-show="!show">
+    <div class="col">
+      <h3 class="hy-font-family">No Activities Available</h3>
+      <div class="message">
+        You currently have no available activities in this category for your current period. 
+        <strong>Check back here later</strong>
+      </div> 
+    </div>
+  </div>
+  <div class="loader-center" ng-if="!doneLoading">
+    <div class="loader">
+      <ion-spinner icon="android"></ion-spinner>
+    </div>
+  </div>
+</div>
